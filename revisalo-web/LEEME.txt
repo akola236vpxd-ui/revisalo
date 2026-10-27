@@ -1,0 +1,18 @@
+REVÍSALO · qué hay en esta carpeta
+==========================================
+
+index.html            La luz de hoy (página principal)
+calculadora.html      Calculadora de gasto por aparato
+sobre.html, privacidad.html, aviso-legal.html   Páginas que pide AdSense
+datos/precios.json    Precios de la luz. SE ACTUALIZA SOLO cada día: no lo toques.
+scripts/actualizar_precios.py   Descarga los precios de Red Eléctrica.
+.github/workflows/web.yml       Le dice a GitHub que actualice los precios y publique la web.
+favicon.svg, apple-touch-icon.png, og.png   Iconos e imagen para compartir en WhatsApp y redes.
+robots.txt, sitemap.xml         Para Google.
+
+Antes de publicar:
+1. En sobre.html, privacidad.html y aviso-legal.html cambia todo lo que va entre corchetes [ ].
+2. Si cambias de dominio, cambia «revisalaluz.es» en todos los .html, robots.txt y sitemap.xml.
+
+Código de AdSense: pégalo en cada .html justo debajo de la línea que dice «GOOGLE ADSENSE».
+Archivo ads.txt de AdSense: súbelo a la raíz del repositorio, junto a index.html.

@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora de consumo eléctrico: cuánto gasta cada aparato · Revísalo</title>
+<meta name="description" content="Calcula cuánto te cuesta en la factura de la luz cada aparato de casa: estufa, radiador, lavadora, nevera… Al día, al mes y al año. Gratis.">
+<link rel="canonical" href="https://revisalaluz.es/calculadora.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#EDF0EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1411" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Revísalo">
+<meta property="og:title" content="Calculadora de consumo eléctrico: cuánto gasta cada aparato · Revísalo">
+<meta property="og:description" content="Calcula cuánto te cuesta en la factura de la luz cada aparato de casa: estufa, radiador, lavadora, nevera… Al día, al mes y al año. Gratis.">
+<meta property="og:url" content="https://revisalaluz.es/calculadora.html">
+<meta property="og:image" content="https://revisalaluz.es/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Revísalo: la luz de hoy, en euros">
+<meta name="twitter:card" content="summary_large_image">
+<!-- GOOGLE ADSENSE: pega aquí, justo debajo de esta línea, el código que te da AdSense -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@500;700&display=swap">
+<style>
+/* Revísalo · concepto: el contador de la luz. Carcasa gris, pantalla LCD verdosa, escala de colores de la etiqueta energética. */
+:root{
+  --bg:#EDF0EC;
+  --surface:#FFFFFF;
+  --ink:#18221D;
+  --muted:#55615A;
+  --line:#D2D9D4;
+  --line-strong:#98A39D;
+  --sel:#18221D;
+  --sel-ink:#FFFFFF;
+  --housing:#E2E6E0;
+  --lcd:#C4D0A6;
+  --lcd-ink:#1C2512;
+  --amber:#A86B00;
+  --bad-ink:#B3261E;
+  --cheap:#187A43; --mid:#E2AE1C; --dear:#CF2F28;
+  --cheap-ink:#FFFFFF; --mid-ink:#18221D; --dear-ink:#FFFFFF;
+  --s1:#0E7F48; --s2:#4FA845; --s3:#B4CB2E; --s4:#F0CD1F; --s5:#EC8A24; --s6:#CF2F28;
+  --band-dark:#18221D; --band-light:#FFFFFF;
+  --fill:#FFE8A3; --fill-ink:#3A2A00;
+  --font-ui:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",Verdana,"Segoe UI",system-ui,sans-serif;
+  --font-num:"Red Hat Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:19px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1411; --surface:#171E1A; --ink:#E8EEE9; --muted:#A1ADA6; --line:#2B3530; --line-strong:#4D5A53;
+    --sel:#E8EEE9; --sel-ink:#0F1411; --housing:#1E2722; --lcd:#1A2513; --lcd-ink:#C6EE6A;
+    --amber:#F2B33D; --bad-ink:#FF8A80; --cheap:#2FA563; --mid:#E9B730; --dear:#C8372E; --cheap-ink:#0F1411;
+    --fill:#5A4500; --fill-ink:#FFE8A3;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1411; --surface:#171E1A; --ink:#E8EEE9; --muted:#A1ADA6; --line:#2B3530; --line-strong:#4D5A53;
+  --sel:#E8EEE9; --sel-ink:#0F1411; --housing:#1E2722; --lcd:#1A2513; --lcd-ink:#C6EE6A;
+  --amber:#F2B33D; --bad-ink:#FF8A80; --cheap:#2FA563; --mid:#E9B730; --dear:#C8372E; --cheap-ink:#0F1411;
+  --fill:#5A4500; --fill-ink:#FFE8A3;
+  color-scheme:dark;
+}
+:root.big-text{font-size:22px}
+:root{padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none !important}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--font-ui); font-size:1rem; line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:10px 56px;
+  -webkit-text-size-adjust:100%;
+}
+img,svg{max-width:100%}
+button{font:inherit; color:inherit}
+a{color:inherit; text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--amber); outline-offset:3px}
+
+.page{max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:36px}
+
+/* Cabecera */
+.masthead{
+  display:grid; grid-template-columns:auto 1fr auto; grid-template-areas:"brand nav size"; align-items:center; gap:10px 16px;
+  padding-block:6px 10px; border-bottom:2px solid var(--ink);
+}
+.brand{grid-area:brand; display:flex; align-items:center; gap:10px; text-decoration:none; min-height:48px}
+.brand svg{width:38px; height:38px; flex:none}
+.brand span{font-weight:800; font-size:1.45rem; letter-spacing:-0.02em; white-space:nowrap}
+.tabs{grid-area:nav; display:flex; gap:4px; justify-self:start}
+.tabs a{
+  text-decoration:none; font-weight:700; font-size:.95rem; min-height:44px; padding:0 14px; border-radius:10px;
+  display:flex; align-items:center; border:2px solid transparent; white-space:nowrap;
+}
+.tabs a:hover{border-color:var(--line-strong)}
+.tabs a[aria-current="page"]{background:var(--sel); color:var(--sel-ink)}
+.size-toggle{
+  grid-area:size; appearance:none; cursor:pointer; background:transparent; border:2px solid var(--line-strong); border-radius:10px;
+  min-height:44px; padding:4px 12px; font-weight:700; font-size:.85rem; display:flex; align-items:center; gap:8px;
+}
+.size-toggle .aa{font-weight:800; line-height:1; letter-spacing:-0.02em}
+.size-toggle .aa small{font-size:.7em}
+.size-toggle .aa b{font-size:1.15em}
+.size-toggle[aria-pressed="true"]{background:var(--sel); color:var(--sel-ink); border-color:var(--sel)}
+@media (max-width:719px){
+  .masthead{grid-template-columns:1fr auto; grid-template-areas:"brand size" "nav nav"}
+  .tabs{justify-self:stretch; display:grid; grid-template-columns:1fr 1fr; background:var(--surface); border:2px solid var(--line); border-radius:12px; padding:3px}
+  .tabs a{justify-content:center}
+  .size-toggle .txt-long{display:none}
+}
+@media (min-width:720px){ .size-toggle .txt-short{display:none} }
+
+/* Tipografía */
+.kicker{margin:0; font-family:var(--font-num); font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+h1{font-weight:800; font-size:clamp(2rem, 7vw, 3rem); line-height:1.04; letter-spacing:-0.025em; margin:0; text-wrap:balance}
+h2{font-weight:800; font-size:1.5rem; line-height:1.15; letter-spacing:-0.015em; margin:0; text-wrap:balance}
+.lead{margin:0; color:var(--muted); font-size:1.08rem; max-width:36rem; text-wrap:pretty}
+.intro{display:flex; flex-direction:column; gap:10px; max-width:42rem}
+.step{display:flex; flex-direction:column; gap:14px; scroll-margin-top:12px}
+.step-title{display:flex; flex-direction:column; gap:2px}
+.note{margin:0; color:var(--muted); font-size:.92rem; text-wrap:pretty}
+.fineprint{margin:0; color:var(--muted); font-size:.85rem; text-wrap:pretty}
+
+/* Controles */
+.panel{background:var(--surface); border:2px solid var(--line); border-radius:16px; padding:18px; display:flex; flex-direction:column; gap:14px}
+.chip{
+  appearance:none; cursor:pointer; background:transparent; border:2px solid var(--line); border-radius:10px;
+  padding:8px 13px; font-size:.92rem; font-weight:700; min-height:46px;
+}
+.chip:hover{border-color:var(--line-strong)}
+.chip[aria-pressed="true"]{background:var(--sel); color:var(--sel-ink); border-color:var(--sel)}
+.chip:disabled{opacity:.4; cursor:default}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.seg{display:grid; grid-template-columns:repeat(auto-fit, minmax(0,1fr)); gap:6px}
+.seg .chip{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0; padding:8px 6px; line-height:1.2; background:var(--surface); text-align:center}
+.seg .chip[aria-pressed="true"]{background:var(--sel)}
+.seg .chip small{font-family:var(--font-num); font-weight:500; font-size:.78rem}
+.link{appearance:none; cursor:pointer; background:none; border:0; padding:0; text-decoration:underline; text-underline-offset:3px; font-weight:700; font-size:.95rem; text-align:left; min-height:44px}
+.field{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.field input{
+  font:inherit; font-family:var(--font-num); font-size:1.25rem; font-weight:700; color:var(--ink); background:var(--bg);
+  border:2px solid var(--ink); border-radius:10px; width:7.5ch; padding:9px 11px;
+}
+.field label{font-weight:700}
+.btn{
+  appearance:none; cursor:pointer; background:var(--sel); color:var(--sel-ink); border:0; border-radius:12px; text-decoration:none;
+  padding:14px 16px; font-size:1.05rem; font-weight:800; min-height:58px; display:flex; align-items:center; justify-content:center; gap:10px;
+}
+.btn svg{width:22px; height:22px; flex:none}
+
+.grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:8px}
+@media (max-width:340px){ .grid{grid-template-columns:repeat(2, minmax(0,1fr))} }
+.tile{
+  appearance:none; cursor:pointer; background:var(--surface); border:2px solid var(--line); border-radius:12px;
+  min-height:96px; padding:10px 6px 8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+  text-align:center; font-size:.88rem; line-height:1.18; font-weight:700; hyphens:auto; overflow-wrap:break-word;
+}
+.tile svg{width:34px; height:34px}
+.tile:hover{border-color:var(--line-strong)}
+.tile[aria-pressed="true"]{background:var(--sel); color:var(--sel-ink); border-color:var(--sel)}
+@media (min-width:620px){ .tile{flex-direction:row; justify-content:flex-start; text-align:left; min-height:64px; padding:10px 12px; gap:12px; font-size:.92rem} .tile svg{flex:none; width:30px; height:30px} }
+.room{margin:6px 0 0; font-size:.85rem; font-weight:700; color:var(--muted)}
+
+/* Contador */
+.meter{background:var(--housing); border:2px solid var(--line-strong); border-radius:22px; padding:18px; display:flex; flex-direction:column; gap:16px; scroll-margin-top:12px}
+.meter-top{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.led{width:12px; height:12px; border-radius:50%; background:var(--amber); box-shadow:0 0 0 4px color-mix(in srgb, var(--amber) 22%, transparent); flex:none}
+.meter-cap{margin:-8px 0 0; color:var(--muted); font-weight:700; font-size:.92rem}
+.lcd{background:var(--lcd); color:var(--lcd-ink); border-radius:10px; padding:12px 16px 10px; box-shadow:inset 0 3px 0 rgba(0,0,0,.10), inset 0 0 0 2px rgba(0,0,0,.06)}
+.lcd-num{text-align:right; font-family:var(--font-num); font-weight:700; font-size:clamp(2.8rem, 14vw, 3.7rem); line-height:1; letter-spacing:-0.02em}
+.lcd-unit{text-align:right; font-weight:700; font-size:.92rem; margin-top:4px}
+.reads{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); margin:0}
+.reads div{padding:0 10px; border-left:2px solid var(--line-strong); min-width:0}
+.reads div:first-child{padding-left:0; border-left:0}
+.reads dt{font-size:.78rem; color:var(--muted); font-weight:700; line-height:1.2}
+.reads dd{margin:4px 0 0; font-family:var(--font-num); font-weight:700; font-size:1.05rem}
+.reads dd small{display:block; font-family:var(--font-ui); font-size:.78rem; color:var(--muted); font-weight:700}
+.price-row{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; border-top:2px solid var(--line-strong); padding-top:10px; font-size:.92rem}
+.price-row b{white-space:nowrap}
+.price-edit{display:flex; flex-direction:column; gap:10px}
+.q{font-weight:700; margin:0}
+
+/* Preguntas */
+.faq{display:flex; flex-direction:column; gap:14px; max-width:44rem}
+.faq-list{border-top:2px solid var(--ink)}
+details.qa{border-bottom:1px solid var(--line-strong)}
+details.qa summary{cursor:pointer; list-style:none; font-weight:700; padding:14px 0; min-height:54px; display:flex; justify-content:space-between; align-items:center; gap:16px}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:"+"; font-family:var(--font-num); font-weight:700; font-size:1.4rem; line-height:1; flex:none}
+details.qa[open] summary::after{content:"−"}
+details.qa p{margin:0 0 16px; max-width:65ch; text-wrap:pretty}
+
+footer{border-top:2px solid var(--ink); padding-top:16px; display:flex; flex-direction:column; gap:10px; color:var(--muted); font-size:.88rem}
+footer nav{display:flex; flex-wrap:wrap; gap:6px 20px}
+footer nav a{color:var(--ink); font-weight:700; min-height:44px; display:inline-flex; align-items:center}
+footer p{margin:0; max-width:46rem}
+
+.fill{background:var(--fill); color:var(--fill-ink); padding:0 .25em; border-radius:4px; font-weight:700}
+
+@media (prefers-reduced-motion: no-preference){
+  .tile, .chip, .tabs a{transition:background-color .15s, border-color .15s, color .15s}
+}
+
+
+/* Página: calculadora. Eliges aparato y uso a la izquierda; el contador con el resultado a la derecha (abajo en el móvil). */
+body{padding-bottom:112px}
+.layout{display:grid; gap:36px; grid-template-columns:minmax(0,1fr); grid-template-areas:"p1" "p2" "meter" "bill"}
+#paso1{grid-area:p1} #paso2{grid-area:p2} #lectura{grid-area:meter} #factura{grid-area:bill}
+@media (min-width:900px){
+  .layout{grid-template-columns:minmax(0,1fr) 400px; grid-template-areas:"p1 meter" "p2 meter" "bill meter"; align-items:start; column-gap:40px}
+  #lectura{align-self:start}
+  body{padding-bottom:56px}
+}
+@media (min-width:900px) and (min-height:820px){ #lectura{position:sticky; top:16px} }
+
+.stepper{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.round{appearance:none; cursor:pointer; width:64px; height:64px; flex:none; border-radius:50%; border:2px solid var(--ink); background:var(--surface); color:var(--ink); display:grid; place-items:center}
+.round svg{width:26px; height:26px}
+.round:disabled{opacity:.3; cursor:default}
+.val{text-align:center; min-width:0}
+.val strong{display:block; font-family:var(--font-num); font-weight:700; font-size:2rem; line-height:1.1}
+.val span{color:var(--muted); font-size:.9rem}
+.days{display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:6px}
+.days .chip{padding:0; min-height:52px; font-family:var(--font-num); font-size:1.1rem}
+.rule{border:0; border-top:2px dashed var(--line); margin:2px 0}
+
+.scale{display:flex; flex-direction:column; gap:4px}
+.scale-head{margin:0 0 4px; font-size:.9rem; font-weight:700; color:var(--muted)}
+.scale-head b{color:var(--ink); font-weight:800}
+.band{display:flex; align-items:center; gap:8px; height:24px}
+.band[aria-current="true"]{height:36px}
+.arrow{
+  height:100%; display:flex; align-items:center; padding-left:10px; font-size:.74rem; font-weight:700; white-space:nowrap;
+  clip-path:polygon(0 0, calc(100% - 13px) 0, 100% 50%, calc(100% - 13px) 100%, 0 100%); flex:none; min-width:9em; max-width:calc(100% - 3.6rem);
+}
+.band[aria-current="true"] .arrow{font-size:.9rem; font-weight:800}
+.mark{display:none; font-weight:800; font-size:.85rem; align-items:center; gap:6px; white-space:nowrap}
+.mark::before{content:""; border:7px solid transparent; border-right-color:var(--ink); border-left:0}
+.band[aria-current="true"] .mark{display:flex}
+.b1 .arrow{background:var(--s1); color:var(--band-light); width:40%}
+.b2 .arrow{background:var(--s2); color:var(--band-dark); width:48%}
+.b3 .arrow{background:var(--s3); color:var(--band-dark); width:56%}
+.b4 .arrow{background:var(--s4); color:var(--band-dark); width:64%}
+.b5 .arrow{background:var(--s5); color:var(--band-dark); width:72%}
+.b6 .arrow{background:var(--s6); color:var(--band-light); width:80%}
+
+.sentence{margin:0; font-size:1.02rem; text-wrap:pretty}
+.tip{background:var(--surface); border-radius:12px; padding:12px 14px; display:flex; flex-direction:column; gap:4px}
+.tip h3{margin:0; font-size:.85rem; font-weight:800; color:var(--muted)}
+.tip p{margin:0; font-size:.95rem; text-wrap:pretty}
+.toast{margin:-6px 0 0; font-weight:700; text-align:center; font-size:.95rem}
+
+.bill{display:flex; flex-direction:column; gap:12px; scroll-margin-top:12px}
+.sheet{background:var(--surface); border:2px solid var(--line); border-radius:16px; padding:6px 16px 14px}
+.lines{list-style:none; margin:0; padding:0}
+.lines li{display:grid; grid-template-columns:32px minmax(0,1fr) auto auto; gap:4px 12px; align-items:center; padding:12px 0; border-bottom:1px solid var(--line)}
+.lines li > svg{width:30px; height:30px; grid-row:span 2}
+.concept b{display:block; line-height:1.2}
+.concept small{color:var(--muted); font-size:.85rem}
+.amt{font-family:var(--font-num); font-weight:700; white-space:nowrap}
+.rm{appearance:none; cursor:pointer; background:none; border:2px solid var(--line); color:var(--bad-ink); border-radius:10px; min-height:44px; padding:0 10px; font-size:.82rem; font-weight:700; grid-row:span 2}
+.bar{grid-column:2 / 4; height:6px; border-radius:99px; background:var(--bg); overflow:hidden}
+.bar i{display:block; height:100%; border-radius:99px; background:var(--line-strong)}
+.lines li.top .bar i{background:var(--s6)}
+.total{display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding-top:12px; margin-top:-1px; border-top:4px double var(--ink); font-weight:800}
+.total b{font-family:var(--font-num); font-size:1.75rem}
+.empty{color:var(--muted); margin:10px 0 0}
+
+.dock{
+  position:fixed; left:0; right:0; bottom:0; z-index:20; background:var(--surface); border-top:2px solid var(--line-strong);
+  padding-left:max(12px, env(safe-area-inset-left, 0px)); padding-right:max(12px, env(safe-area-inset-right, 0px));
+  padding-top:8px; padding-bottom:calc(8px + env(safe-area-inset-bottom, 0px)); box-shadow:0 -8px 24px rgba(0,0,0,.12);
+}
+.dock-in{max-width:580px; margin:0 auto; display:flex; align-items:center; gap:12px}
+.dock-in > span > svg{width:30px; height:30px; display:block}
+.dock-txt{flex:1; min-width:0; line-height:1.2}
+.dock-txt span{display:block; font-size:.82rem; color:var(--muted); font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.dock-txt b{font-family:var(--font-num); font-size:1.3rem}
+.dock .btn{min-height:50px; padding:8px 16px; font-size:.95rem}
+@media (min-width:900px){ .dock{display:none !important} }
+
+@media (prefers-reduced-motion: no-preference){
+  .round{transition:background-color .15s, border-color .15s, color .15s}
+  .bar i{transition:width .4s ease}
+  .flash{animation:flash .5s ease}
+  @keyframes flash{0%{box-shadow:0 0 0 0 var(--amber)}50%{box-shadow:0 0 0 5px var(--amber)}100%{box-shadow:0 0 0 0 transparent}}
+}
+</style>
+</head>
+<body>
+<div class="page" lang="es">
+  <header class="masthead">
+    <a class="brand" href="./" aria-label="Revísalo, inicio">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="var(--ink)"/>
+        <rect x="6.5" y="8" width="27" height="14" rx="2.5" fill="var(--lcd)"/>
+        <path d="M24.5 11.6a4.4 4.4 0 1 0 0 6.8M17 14h6M17 16.4h6" fill="none" stroke="var(--lcd-ink)" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="11" cy="30" r="2.4" fill="var(--amber)"/>
+        <path d="M17.5 30h15" stroke="var(--lcd)" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span>Revísalo</span>
+    </a>
+    <nav class="tabs" aria-label="Secciones">
+      <a href="./">La luz hoy</a>
+      <a href="calculadora.html" aria-current="page">Calculadora de gasto</a>
+    </nav>
+    <button class="size-toggle" id="sizeBtn" type="button" aria-pressed="false"><span class="aa" aria-hidden="true"><small>A</small><b>A</b></span><span class="txt-long">Letra más grande</span><span class="txt-short">Letra</span></button>
+  </header>
+
+
+  <div class="intro">
+    <h1>¿Cuánto gasta cada aparato de tu casa?</h1>
+    <p class="lead">Elige un aparato y dinos cuánto lo usas. Te decimos lo que te cuesta en la factura de la luz.</p>
+  </div>
+
+  <main class="layout">
+    <section class="step" id="paso1" aria-labelledby="h-p1">
+      <div class="step-title"><p class="kicker">Paso 1 de 2</p><h2 id="h-p1">Elige el aparato</h2></div>
+      <div id="apps"></div>
+    </section>
+
+    <section class="step" id="paso2" aria-labelledby="h-p2">
+      <div class="step-title"><p class="kicker">Paso 2 de 2</p><h2 id="h-p2">¿Cuánto usas la estufa?</h2></div>
+      <div class="panel">
+        <p class="q" id="q-time">Cada vez que lo enciendes, ¿cuánto tiempo?</p>
+        <div class="stepper" role="group" aria-labelledby="q-time">
+          <button class="round" id="minus" type="button" aria-label="Menos tiempo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+          <div class="val" aria-live="polite"><strong id="timeText">4 horas</strong><span id="timeSub">cada día que lo usas</span></div>
+          <button class="round" id="plus" type="button" aria-label="Más tiempo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button>
+        </div>
+        <div class="chips" id="presets" role="group" aria-label="Tiempos habituales"></div>
+        <hr class="rule">
+        <p class="q" id="q-days">¿Cuántos días a la semana?</p>
+        <div class="days" id="days" role="group" aria-labelledby="q-days"></div>
+        <p class="note" id="daysNote">Todos los días</p>
+        <hr class="rule">
+        <p class="note" id="wattsInfo">Calculamos con 2000 W, lo que gasta de media.</p>
+        <button class="link" id="wattsToggle" type="button" aria-expanded="false" aria-controls="wattsEdit">Mi aparato pone otra potencia</button>
+        <div id="wattsEdit" hidden>
+          <div class="field">
+            <input id="wattsInput" type="number" inputmode="numeric" min="1" max="10000" step="1" aria-describedby="wattsHint">
+            <label for="wattsInput">vatios (W)</label>
+          </div>
+          <p class="note" id="wattsHint">Lo pone en la pegatina del aparato o en sus instrucciones. Si pone kW, multiplica por 1000: 2 kW son 2000 W.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="meter" id="lectura" aria-labelledby="h-res">
+      <div class="meter-top"><h2 id="h-res">Lo que te cuesta</h2><span class="led" aria-hidden="true"></span></div>
+      <p class="meter-cap" id="resCap">Estufa · 4 horas · todos los días</p>
+      <div class="lcd" aria-live="polite" aria-atomic="true">
+        <div class="lcd-num" id="perMonth">0,00</div>
+        <div class="lcd-unit">euros al mes</div>
+      </div>
+      <dl class="reads">
+        <div><dt>Cada día que lo usas</dt><dd id="perUse">–</dd></div>
+        <div><dt>Al año</dt><dd id="perYear">–</dd></div>
+        <div><dt>Luz al mes</dt><dd id="kwh">–</dd></div>
+      </dl>
+      <div class="scale" role="group" aria-labelledby="scaleHead">
+        <p class="scale-head" id="scaleHead">¿Es mucho? <b id="verdictWord">–</b></p>
+        <div id="bands"></div>
+      </div>
+      <p class="sentence" id="sentence"></p>
+      <div class="tip"><h3>Para gastar menos</h3><p id="tip"></p></div>
+      <button class="btn" id="addBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg>Apuntar en mi factura</button>
+      <p class="toast" id="toast" role="status" hidden></p>
+      <div class="price-row">
+        <span>Precio de la luz: <b id="priceLabel">–</b></span>
+        <button class="link" id="priceToggle" type="button" aria-expanded="false" aria-controls="priceEdit">Cambiar</button>
+      </div>
+      <div class="price-edit" id="priceEdit" hidden>
+        <p class="q">¿Qué tarifa tienes?</p>
+        <div class="seg" id="tariffs" role="group" aria-label="Tarifa de luz">
+          <button class="chip" type="button" id="tar-pvpc">Regulada<small id="pvpcSub">media de hoy</small></button>
+          <button class="chip" type="button" id="tar-fijo">Precio fijo<small id="fijoSub">el tuyo</small></button>
+          <button class="chip" type="button" id="tar-nose">No lo sé<small>0,23 €</small></button>
+        </div>
+        <div class="field" id="fijoField" hidden>
+          <input id="fijoInput" type="text" inputmode="decimal" aria-describedby="priceHint">
+          <label for="fijoInput">€ por kWh</label>
+        </div>
+        <p class="note" id="priceHint">Si tienes precio fijo, búscalo en tu factura como «término de energía» y escríbelo con impuestos. Ejemplo: 0,165.</p>
+      </div>
+    </section>
+
+    <section class="bill" id="factura" aria-labelledby="h-bill">
+      <div class="step-title"><p class="kicker">Tu cuenta</p><h2 id="h-bill">Mi factura</h2></div>
+      <div class="sheet" id="sheet">
+        <p class="empty" id="billEmpty">Aún no has apuntado nada. Pulsa «Apuntar en mi factura» con cada aparato que tengas y verás aquí el total del mes.</p>
+        <ul class="lines" id="billList"></ul>
+        <div class="total" id="billTotal" hidden><span>Total al mes</span><b id="totalVal">0,00 €</b></div>
+      </div>
+      <p class="fineprint" id="topNote" hidden></p>
+      <p class="fineprint">Tu factura real será algo más alta: también se paga la potencia contratada, el alquiler del contador y algunos impuestos fijos.</p>
+    </section>
+  </main>
+
+  <section class="faq" aria-labelledby="h-faq">
+    <h2 id="h-faq">Preguntas frecuentes</h2>
+    <div class="faq-list">
+      <details class="qa"><summary>¿Cómo se calcula lo que gasta un aparato?</summary>
+        <p>Se multiplica la potencia del aparato por las horas que está encendido, y eso por el precio de la luz. Una estufa de 2000 W encendida 4 horas gasta 8 kWh. Con la luz a 0,23 € el kWh, ese día te cuesta 1,84 €.</p></details>
+      <details class="qa"><summary>¿Dónde veo la potencia de mi aparato?</summary>
+        <p>En la pegatina que suelen llevar detrás o debajo, o en el libro de instrucciones. Busca un número seguido de W (vatios) o kW (kilovatios). 1 kW son 1000 W.</p></details>
+      <details class="qa"><summary>¿Por qué mi factura es más alta que el total?</summary>
+        <p>La factura también cobra partes fijas aunque no enciendas nada: la potencia contratada, el alquiler del contador y algunos impuestos. Aquí solo calculamos lo que gasta cada aparato.</p></details>
+      <details class="qa"><summary>¿Por qué el radiador o la nevera gastan menos de lo que pone?</summary>
+        <p>Porque no funcionan a tope todo el rato. Se apagan y se encienden solos según la temperatura. Por eso usamos lo que gastan de media, no lo que pone como máximo en la pegatina.</p></details>
+      <details class="qa"><summary>¿Qué precio de la luz usáis?</summary>
+        <p>Si tienes la tarifa regulada, usamos la media de hoy con impuestos, que se actualiza sola cada día. Si tienes precio fijo, escribe el tuyo en «Precio de la luz». Y si no lo sabes, usamos 0,23 € por kWh, un precio intermedio.</p></details>
+      <details class="qa"><summary>¿Guardáis lo que apunto?</summary>
+        <p>No. Lo que apuntas se queda en tu móvil u ordenador y no nos llega. No pedimos nombre, correo ni ningún otro dato.</p></details>
+    </div>
+  </section>
+
+  <footer>
+    <nav aria-label="Información">
+      <a href="./">La luz hoy</a>
+      <a href="calculadora.html">Calculadora de gasto</a>
+      <a href="sobre.html">Quiénes somos</a>
+      <a href="privacidad.html">Privacidad y cookies</a>
+      <a href="aviso-legal.html">Aviso legal</a>
+    </nav>
+    <p>Precios de la tarifa regulada (PVPC) publicados por Red Eléctrica de España, con IVA e impuesto eléctrico incluidos. Los cálculos son orientativos y no sustituyen a tu factura.</p>
+  </footer>
+
+</div>
+
+<div class="dock" id="dock">
+  <div class="dock-in">
+    <span id="dockIc"></span>
+    <div class="dock-txt"><span id="dockCap">Estufa</span><b id="dockVal">–</b></div>
+    <button class="btn" type="button" id="dockBtn">Ver detalle</button>
+  </div>
+</div>
+
+<script>
+var RV = (function(){
+  var ICONS = {
+    estufa:'<rect x="5" y="14" width="22" height="12" rx="2"/><path d="M9 18h14M9 22h14M8 26v2.5M24 26v2.5M11 10.5c-1.2-1.2 1.2-2.4 0-3.6M16 10.5c-1.2-1.2 1.2-2.4 0-3.6M21 10.5c-1.2-1.2 1.2-2.4 0-3.6"/>',
+    radiador:'<rect x="5.5" y="6" width="4.2" height="19" rx="2.1"/><rect x="10.6" y="6" width="4.2" height="19" rx="2.1"/><rect x="15.7" y="6" width="4.2" height="19" rx="2.1"/><rect x="20.8" y="6" width="4.2" height="19" rx="2.1"/><path d="M7.6 25v3M22.9 25v3M25 10h2.5"/>',
+    brasero:'<ellipse cx="16" cy="21" rx="11" ry="4.5"/><path d="M5 21v1.5C5 25 9.9 27 16 27s11-2 11-4.5V21M11.5 21h9M11 13c-1.2-1.2 1.2-2.4 0-3.6M16 13c-1.2-1.2 1.2-2.4 0-3.6M21 13c-1.2-1.2 1.2-2.4 0-3.6"/>',
+    manta:'<rect x="3.5" y="6" width="19" height="17" rx="2.5"/><path d="M7.5 11l1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8M7.5 17l1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8M22.5 18h2.5a2 2 0 0 1 2 2v3.5"/><rect x="24.5" y="23.5" width="5" height="5" rx="1"/>',
+    aire:'<rect x="3" y="6" width="26" height="12" rx="3"/><path d="M7 14h18M10 22l-1.5 4.5M16 22v4.5M22 22l1.5 4.5"/>',
+    ventilador:'<circle cx="16" cy="13" r="9.5"/><circle cx="16" cy="13" r="1.4"/><path d="M16 11.6V5.5M17.2 13.7l5.3 3M14.8 13.7l-5.3 3M16 22.5v5M10.5 28.5h11"/>',
+    nevera:'<rect x="8" y="3" width="16" height="26" rx="2.5"/><path d="M8 12h16M12 6.5v2.5M12 15.5v5"/>',
+    horno:'<rect x="4" y="5" width="24" height="22" rx="2.5"/><path d="M4 11h24M8.5 8h.01M12 8h.01M19 8h5"/><rect x="9" y="15" width="14" height="8" rx="1.5"/>',
+    vitro:'<rect x="3" y="6" width="26" height="20" rx="2.5"/><circle cx="10.5" cy="12.5" r="3.5"/><circle cx="21.5" cy="12" r="2.5"/><circle cx="10.5" cy="20.5" r="2.5"/><circle cx="21.5" cy="20" r="3.5"/>',
+    micro:'<rect x="3" y="7" width="26" height="18" rx="2.5"/><rect x="6.5" y="10.5" width="14" height="11" rx="1.5"/><path d="M25 11.5h.01M25 15h.01M23.5 21h3"/>',
+    freidora:'<path d="M10 4h12a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z"/><path d="M6 16h20M13 21.5h6"/><circle cx="16" cy="10" r="2.5"/>',
+    cafetera:'<path d="M6 13h15v6a7 7 0 0 1-7 7h-1a7 7 0 0 1-7-7z"/><path d="M21 15h1.5a3 3 0 0 1 0 6h-2M11 4.5c-1.2 1.2 1.2 2.4 0 3.6M16 4.5c-1.2 1.2 1.2 2.4 0 3.6"/>',
+    lavadora:'<rect x="5" y="3" width="22" height="26" rx="2.5"/><path d="M5 9h22M9 6h.01M12.5 6h.01"/><circle cx="16" cy="18.5" r="6"/><path d="M12.6 19.4c1.2 1.3 3.2 1.7 4.8 1"/>',
+    secadora:'<rect x="5" y="3" width="22" height="26" rx="2.5"/><path d="M5 9h22M9 6h.01M12.5 6h.01"/><circle cx="16" cy="18.5" r="6"/><path d="M14 15.8c-.8.8.8 1.6 0 2.4s.8 1.6 0 2.4M18 15.8c-.8.8.8 1.6 0 2.4s.8 1.6 0 2.4"/>',
+    lavavajillas:'<rect x="5" y="3" width="22" height="26" rx="2.5"/><path d="M5 9h22M9 6h.01M12.5 6h.01M9.5 25h13M12 25v-8M16 25v-10.5M20 25v-8"/>',
+    plancha:'<path d="M3.5 24h22.5a2 2 0 0 0 2-2v-1.5a8.5 8.5 0 0 0-8.5-8.5h-6C7.5 12 3.5 17 3.5 24z"/><path d="M14.5 12V8.5A1.5 1.5 0 0 1 16 7h7.5A1.5 1.5 0 0 1 25 8.5v5.2"/>',
+    termo:'<rect x="9" y="3" width="14" height="21" rx="5"/><path d="M13 24v5M19 24v5M16 10l1.6-1.6"/><circle cx="16" cy="10" r="3"/>',
+    secador:'<circle cx="10" cy="11" r="6.5"/><path d="M16 8h11v6H16M8.5 17.5L7 27.5h4.5l1.6-8.6"/><circle cx="10" cy="11" r="2"/>',
+    tele:'<rect x="3" y="5" width="26" height="17" rx="2"/><path d="M16 22v5M11 27.5h10"/>',
+    ordenador:'<rect x="6" y="6" width="20" height="14" rx="1.5"/><path d="M3 25.5h26M6 20l-3 5.5M26 20l3 5.5"/>',
+    bombilla:'<path d="M16 3.5a8 8 0 0 0-5 14.2c1 .8 1.5 1.9 1.5 3.1V22h7v-1.2c0-1.2.5-2.3 1.5-3.1A8 8 0 0 0 16 3.5z"/><path d="M12.5 25.5h7M14 28.5h4"/>',
+    bombillavieja:'<path d="M16 3.5a8 8 0 0 0-5 14.2c1 .8 1.5 1.9 1.5 3.1V22h7v-1.2c0-1.2.5-2.3 1.5-3.1A8 8 0 0 0 16 3.5z"/><path d="M12.5 25.5h7M14 28.5h4M13 14.5l1.5-3 1.5 3 1.5-3 1.5 3"/>',
+    movil:'<rect x="9" y="3" width="14" height="26" rx="2.5"/><path d="M14 25.5h4M17.2 9.5l-3 5h4l-3 5"/>',
+    coche:'<path d="M5.5 19l2.6-6.6A3 3 0 0 1 10.9 10.5h10.2a3 3 0 0 1 2.8 1.9L26.5 19"/><rect x="3" y="19" width="26" height="7" rx="2"/><path d="M7.5 26v2.5M24.5 26v2.5M8 22.5h.01M24 22.5h.01M17 12.5l-2 3.2h3l-2 3.2"/>',
+    otro:'<path d="M12 3v6M20 3v6M8 9h16v5a8 8 0 0 1-16 0z"/><path d="M16 22v7"/>'
+  };
+  function icon(id){ return '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[id] || ICONS.otro) + '</svg>'; }
+
+  /* Ajustes guardados en este navegador */
+  var KEY = "revisalo";
+  var settings = { tarifa:"pvpc", fijo:0.165, big:false, list:[] };
+  try {
+    var s = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (s && typeof s === "object"){
+      if (s.tarifa === "pvpc" || s.tarifa === "fijo" || s.tarifa === "nose") settings.tarifa = s.tarifa;
+      if (typeof s.fijo === "number" && s.fijo > 0 && s.fijo < 2) settings.fijo = s.fijo;
+      settings.big = !!s.big;
+      if (Array.isArray(s.list)) settings.list = s.list;
+    }
+  } catch(e) {}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(settings)); } catch(e) {} }
+
+  function applySize(){
+    document.documentElement.classList.toggle("big-text", settings.big);
+    var b = document.getElementById("sizeBtn");
+    if (b) b.setAttribute("aria-pressed", settings.big ? "true" : "false");
+  }
+  function bindSize(){
+    var b = document.getElementById("sizeBtn");
+    if (b) b.addEventListener("click", function(){ settings.big = !settings.big; applySize(); save(); });
+    applySize();
+  }
+
+  /* Fechas y horas siempre en hora de España peninsular */
+  var partsFmt = new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/Madrid", year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit", hourCycle:"h23"});
+  function madrid(){
+    var o = {};
+    partsFmt.formatToParts(new Date()).forEach(function(p){ o[p.type] = p.value; });
+    return { date:o.year + "-" + o.month + "-" + o.day, h:parseInt(o.hour, 10) % 24, m:parseInt(o.minute, 10) };
+  }
+  function addDays(ymd, n){
+    var p = ymd.split("-"), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2] + n));
+    return d.toISOString().slice(0, 10);
+  }
+  var DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+  var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  function dayLabel(ymd){
+    var p = ymd.split("-"), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]));
+    return DIAS[d.getUTCDay()] + " " + (+p[2]) + " de " + MESES[+p[1] - 1];
+  }
+
+  var n2 = new Intl.NumberFormat("es-ES", {minimumFractionDigits:2, maximumFractionDigits:2});
+  var n3 = new Intl.NumberFormat("es-ES", {minimumFractionDigits:3, maximumFractionDigits:3});
+  var n0 = new Intl.NumberFormat("es-ES", {maximumFractionDigits:0});
+  function num(v){ return v >= 100 ? n0.format(v) : n2.format(v); }
+  function money(v){ return num(v) + " €"; }
+  /* céntimos para importes pequeños: más fácil de entender */
+  function cost(v){ return v < 1 ? n0.format(Math.round(v * 100)) + " cént." : money(v); }
+  function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+  function hh(h){ return (h < 10 ? "0" : "") + h + ":00"; }
+
+  /* Precios: archivo actualizado cada día; si no carga, los últimos incluidos en la página */
+  var FALLBACK = {"actualizado": "2026-10-27T15:00:00+01:00", "fuente": "Red Eléctrica de España · PVPC 2.0TD (península, Baleares y Canarias)", "unidad": "€/kWh sin impuestos", "impuestos": {"iva": 0.21, "iee": 0.0511269632}, "dias": {"2026-10-27": [0.1933, 0.1899, 0.1841, 0.1848, 0.1945, 0.2035, 0.236, 0.2713, 0.2865, 0.21, 0.2028, 0.1853, 0.1598, 0.159, 0.1032, 0.1389, 0.2276, 0.2834, 0.3782, 0.3743, 0.3599, 0.3396, 0.2572, 0.2365]}};
+  function loadPrices(){
+    var ok = function(d){ return d && d.dias && typeof d.dias === "object" && Object.keys(d.dias).length; };
+    if (!window.fetch) return Promise.resolve(FALLBACK);
+    return fetch("datos/precios.json", {cache:"no-store"})
+      .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(d){ return ok(d) ? d : FALLBACK; })
+      .catch(function(){ return FALLBACK; });
+  }
+  function taxFactor(d){
+    var t = (d && d.impuestos) || {};
+    return (1 + (typeof t.iee === "number" ? t.iee : 0.0511269632)) * (1 + (typeof t.iva === "number" ? t.iva : 0.21));
+  }
+  function reduced(){ try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e){ return true; } }
+
+  return { icon:icon, settings:settings, save:save, bindSize:bindSize, madrid:madrid, addDays:addDays, dayLabel:dayLabel,
+           n2:n2, n3:n3, n0:n0, num:num, money:money, cost:cost, cap:cap, hh:hh, loadPrices:loadPrices, taxFactor:taxFactor, reduced:reduced };
+})();
+
+
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var S = RV.settings;
+  /* w = vatios de media mientras funciona · m = minutos por defecto · d = días a la semana · s = se puede mover a horas baratas */
+  var APPS = [
+    {g:"Calefacción y aire", id:"estufa", n:"Estufa", art:"la estufa", w:2000, m:240, d:7, tip:"Es de lo que más gasta en una casa. Si es para calentarte tú en el sofá, una manta eléctrica gasta unas veinte veces menos."},
+    {g:"Calefacción y aire", id:"radiador", n:"Radiador", art:"el radiador", w:1000, m:240, d:7, tip:"Ponlo a 20 °C y cierra la puerta de la habitación. Cada grado de más se nota en la factura."},
+    {g:"Calefacción y aire", id:"brasero", n:"Brasero", art:"el brasero", w:600, m:180, d:7, tip:"Con unas buenas faldillas en la mesa camilla el calor no se escapa y puedes ponerlo más bajo."},
+    {g:"Calefacción y aire", id:"manta", n:"Manta eléctrica", art:"la manta eléctrica", w:80, m:120, d:7, tip:"Es de las maneras más baratas de entrar en calor. Calienta la cama un rato antes de acostarte y apágala al dormir."},
+    {g:"Calefacción y aire", id:"aire", n:"Aire acondicionado", art:"el aire acondicionado", w:900, m:240, d:7, tip:"En verano ponlo a 25 o 26 °C. Cada grado más frío gasta bastante más."},
+    {g:"Calefacción y aire", id:"ventilador", n:"Ventilador", art:"el ventilador", w:50, m:240, d:7, tip:"Gasta muchísimo menos que el aire acondicionado. Para refrescarte un rato es lo más barato."},
+    {g:"Cocina", id:"nevera", n:"Nevera", art:"la nevera", w:40, m:1440, d:7, tip:"No metas comida caliente y déjale un palmo de aire por detrás. Así el motor trabaja menos."},
+    {g:"Cocina", id:"horno", n:"Horno", art:"el horno", w:1500, m:60, d:3, s:true, tip:"No abras la puerta mientras cocina. Y apágalo cinco minutos antes: termina de hacerse con el calor que queda."},
+    {g:"Cocina", id:"vitro", n:"Vitro o placa", art:"la vitro", w:1500, m:60, d:7, tip:"Tapa las cazuelas: el agua hierve antes y gastas menos."},
+    {g:"Cocina", id:"micro", n:"Microondas", art:"el microondas", w:1000, m:15, d:7, tip:"Para calentar poca comida, el microondas gasta menos que el horno."},
+    {g:"Cocina", id:"freidora", n:"Freidora de aire", art:"la freidora de aire", w:1200, m:30, d:5, tip:"Para raciones pequeñas suele gastar menos que el horno, porque calienta un espacio más pequeño."},
+    {g:"Cocina", id:"cafetera", n:"Cafetera", art:"la cafetera", w:1000, m:15, d:7, tip:"Si se queda manteniendo el café caliente, apágala cuando termines."},
+    {g:"Ropa y baño", id:"lavadora", n:"Lavadora", art:"la lavadora", w:800, m:60, d:4, s:true, tip:"Lava en frío o a 30 °C. Casi toda la luz de la lavadora se va en calentar el agua."},
+    {g:"Ropa y baño", id:"secadora", n:"Secadora", art:"la secadora", w:2500, m:60, d:2, s:true, tip:"Gasta mucho. Si puedes, tiende al aire, y si la usas, centrifuga bien la ropa antes."},
+    {g:"Ropa y baño", id:"lavavajillas", n:"Lavavajillas", art:"el lavavajillas", w:1000, m:60, d:5, s:true, tip:"Ponlo solo cuando esté lleno y con el programa eco."},
+    {g:"Ropa y baño", id:"plancha", n:"Plancha", art:"la plancha", w:1200, m:30, d:1, s:true, tip:"Plancha todo de una vez en lugar de un poco cada día. Lo que más gasta es calentarla."},
+    {g:"Ropa y baño", id:"termo", n:"Termo de agua", art:"el termo", w:1500, m:120, d:7, s:true, tip:"Ponlo a 50 o 55 °C. Más caliente solo gasta más, y luego la mezclas con agua fría."},
+    {g:"Ropa y baño", id:"secador", n:"Secador de pelo", art:"el secador", w:1800, m:15, d:4, tip:"Quita la humedad con la toalla primero y usarás menos rato el secador."},
+    {g:"Resto de la casa", id:"tele", n:"Televisión", art:"la tele", w:100, m:240, d:7, tip:"Apágala del todo por la noche en vez de dejarla en espera con la lucecita roja."},
+    {g:"Resto de la casa", id:"ordenador", n:"Ordenador", art:"el ordenador", w:200, m:240, d:7, tip:"Si vas a dejarlo un rato, suspéndelo o apaga al menos la pantalla."},
+    {g:"Resto de la casa", id:"bombilla", n:"Bombilla LED", art:"una bombilla LED", w:10, m:300, d:7, tip:"Las LED ya gastan muy poco. Lo que queda es apagar al salir de la habitación."},
+    {g:"Resto de la casa", id:"bombillavieja", n:"Bombilla antigua", art:"una bombilla antigua", w:60, m:300, d:7, tip:"Cámbiala por una LED. Da la misma luz y gasta unas seis veces menos."},
+    {g:"Resto de la casa", id:"movil", n:"Cargador del móvil", art:"el cargador del móvil", w:10, m:120, d:7, tip:"Cargar el móvil gasta casi nada. Puedes cargarlo tranquilo."},
+    {g:"Resto de la casa", id:"otro", n:"Otro aparato", art:"este aparato", w:1000, m:60, d:7, tip:"Escribe los vatios que pone en la pegatina del aparato para que el cálculo sea exacto."}
+  ];
+  var BANDS = [
+    {max:1, label:"Menos de 1 €", word:"Casi nada"},
+    {max:3, label:"De 1 a 3 €", word:"Muy poco"},
+    {max:8, label:"De 3 a 8 €", word:"Poco"},
+    {max:20, label:"De 8 a 20 €", word:"Bastante"},
+    {max:40, label:"De 20 a 40 €", word:"Mucho"},
+    {max:Infinity, label:"Más de 40 €", word:"Muchísimo"}
+  ];
+  var PRESETS = [15, 30, 60, 120, 240, 480, 1440];
+  var WEEKS_PER_MONTH = 52 / 12;
+  var NOSE = 0.23;
+  var SHIFT_TIP = " Si tienes la tarifa regulada, úsalo cuando la luz esté barata: mira la hora en «La luz hoy».";
+
+  var byId = {}; APPS.forEach(function(a){ byId[a.id] = a; });
+  var state = { app:"estufa", minutes:240, days:7, watts:{} };
+  S.list = (S.list || []).filter(function(i){ return i && byId[i.app] && i.minutes > 0 && i.w > 0 && i.days >= 1 && i.days <= 7; });
+  var pvpcAvg = 0.28, pvpcLoaded = false;
+
+  function price(){ return S.tarifa === "fijo" ? S.fijo : S.tarifa === "nose" ? NOSE : pvpcAvg; }
+  function wattsOf(id){ return state.watts[id] || byId[id].w; }
+  function kwhUse(w, min){ return (w / 1000) * (min / 60); }
+  function costUse(w, min){ return kwhUse(w, min) * price(); }
+  function costMonth(w, min, days){ return costUse(w, min) * days * WEEKS_PER_MONTH; }
+  function band(m){ for (var i = 0; i < BANDS.length; i++) if (m < BANDS[i].max) return i; return BANDS.length - 1; }
+  var cap = RV.cap, money = RV.money, num = RV.num;
+
+  function fmtTime(min){
+    if (min >= 1440) return "todo el día";
+    if (min < 60) return min + " minutos";
+    var h = Math.floor(min / 60), m = min % 60;
+    if (m) return h + " h y " + m + " min";
+    return h === 1 ? "1 hora" : h + " horas";
+  }
+  function fmtShort(min){ if (min >= 1440) return "Todo el día"; if (min < 60) return min + " min"; return min === 60 ? "1 hora" : (min / 60) + " horas"; }
+  function fmtDays(d){ return d === 7 ? "todos los días" : (d === 1 ? "1 día a la semana" : d + " días a la semana"); }
+  function stepUp(min){ if (min < 60) return min + 15; if (min < 240) return min + 30; return Math.min(1440, min + 60); }
+  function stepDown(min){ if (min <= 60) return Math.max(15, min - 15); if (min <= 240) return min - 30; return min - 60; }
+  function wide(){ try { return window.matchMedia("(min-width: 900px)").matches; } catch(e){ return false; } }
+
+  function buildApps(){
+    var box = $("apps"), group = null, grid = null;
+    APPS.forEach(function(a){
+      if (a.g !== group){
+        group = a.g;
+        var lab = document.createElement("p"); lab.className = "room"; lab.textContent = group;
+        grid = document.createElement("div"); grid.className = "grid"; grid.setAttribute("role","group"); grid.setAttribute("aria-label", group);
+        box.appendChild(lab); box.appendChild(grid);
+      }
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "tile"; b.id = "app-" + a.id;
+      b.innerHTML = RV.icon(a.id) + "<span></span>"; b.lastChild.textContent = a.n;
+      b.addEventListener("click", function(){
+        if (state.app !== a.id){ state.app = a.id; state.minutes = a.m; state.days = a.d; }
+        openWatts(a.id === "otro"); render();
+        if (!wide()) $("paso2").scrollIntoView({behavior: RV.reduced() ? "auto" : "smooth", block:"start"});
+      });
+      grid.appendChild(b);
+    });
+  }
+  function buildPresets(){
+    PRESETS.forEach(function(m){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "chip"; b.id = "pre-" + m; b.textContent = fmtShort(m);
+      b.addEventListener("click", function(){ state.minutes = m; render(); });
+      $("presets").appendChild(b);
+    });
+  }
+  function buildDays(){
+    for (var d = 1; d <= 7; d++) (function(d){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "chip"; b.id = "day-" + d; b.textContent = d;
+      b.setAttribute("aria-label", cap(fmtDays(d)));
+      b.addEventListener("click", function(){ state.days = d; render(); });
+      $("days").appendChild(b);
+    })(d);
+  }
+  function buildBands(){
+    BANDS.forEach(function(bd, i){
+      var row = document.createElement("div");
+      row.className = "band b" + (i + 1); row.id = "band-" + i;
+      row.innerHTML = '<span class="arrow"></span><span class="mark">Aquí</span>';
+      row.firstChild.textContent = bd.label;
+      $("bands").appendChild(row);
+    });
+  }
+  function openWatts(open){
+    $("wattsEdit").hidden = !open;
+    $("wattsToggle").setAttribute("aria-expanded", open ? "true" : "false");
+    $("wattsInput").value = wattsOf(state.app);
+  }
+
+  function render(){
+    var a = byId[state.app], w = wattsOf(a.id);
+    APPS.forEach(function(x){ $("app-" + x.id).setAttribute("aria-pressed", x.id === a.id ? "true" : "false"); });
+    PRESETS.forEach(function(m){ $("pre-" + m).setAttribute("aria-pressed", m === state.minutes ? "true" : "false"); });
+    for (var d = 1; d <= 7; d++) $("day-" + d).setAttribute("aria-pressed", d === state.days ? "true" : "false");
+    ["pvpc","fijo","nose"].forEach(function(t){ $("tar-" + t).setAttribute("aria-pressed", S.tarifa === t ? "true" : "false"); });
+    $("fijoField").hidden = S.tarifa !== "fijo";
+    if (document.activeElement !== $("fijoInput")) $("fijoInput").value = String(S.fijo).replace(".", ",");
+    $("pvpcSub").textContent = (pvpcLoaded ? "hoy " : "aprox. ") + RV.n2.format(pvpcAvg) + " €";
+    $("fijoSub").textContent = RV.n3.format(S.fijo) + " €";
+
+    $("h-p2").textContent = "¿Cuánto usas " + a.art + "?";
+    $("timeText").textContent = cap(fmtTime(state.minutes));
+    $("timeSub").textContent = state.minutes >= 1440 ? "sin apagarlo" : "cada día que lo usas";
+    $("minus").disabled = state.minutes <= 15;
+    $("plus").disabled = state.minutes >= 1440;
+    $("daysNote").textContent = cap(fmtDays(state.days));
+    $("wattsInfo").textContent = a.id === "otro"
+      ? "Escribe la potencia de tu aparato. Ahora calculamos con " + w + " W."
+      : "Calculamos con " + w + " W, lo que gasta de media" + (state.watts[a.id] ? " según tu aparato." : ".");
+    $("wattsToggle").hidden = a.id === "otro";
+    if (document.activeElement !== $("wattsInput")) $("wattsInput").value = w;
+
+    var use = costUse(w, state.minutes), month = costMonth(w, state.minutes, state.days);
+    var kwhMonth = kwhUse(w, state.minutes) * state.days * WEEKS_PER_MONTH;
+    var when = fmtTime(state.minutes) + " · " + fmtDays(state.days);
+    $("resCap").textContent = a.n + " · " + when;
+    $("perMonth").textContent = num(month);
+    $("perUse").textContent = money(use);
+    $("perYear").textContent = RV.n0.format(Math.round(month * 12)) + " €";
+    $("kwh").textContent = (kwhMonth < 10 ? RV.n2.format(kwhMonth) : RV.n0.format(kwhMonth)) + " kWh";
+    var bi = band(month);
+    BANDS.forEach(function(_, i){ var r = $("band-" + i); if (i === bi) r.setAttribute("aria-current","true"); else r.removeAttribute("aria-current"); });
+    $("verdictWord").textContent = BANDS[bi].word + " (" + BANDS[bi].label.toLowerCase() + " al mes)";
+    $("sentence").textContent = cap(state.minutes >= 1440 ? "tener " + a.art + " enchufado todo el día" : "usar " + a.art + " " + fmtTime(state.minutes))
+      + ", " + fmtDays(state.days) + ", te cuesta unos " + money(month) + " al mes.";
+    $("tip").textContent = a.tip + (a.s && S.tarifa !== "fijo" ? SHIFT_TIP : "");
+    $("priceLabel").textContent = RV.n3.format(price()) + " €/kWh" + (S.tarifa === "fijo" ? " (el tuyo)" : S.tarifa === "nose" ? " (precio medio)" : " (regulada, media de hoy)");
+
+    $("dockIc").innerHTML = RV.icon(a.id);
+    $("dockCap").textContent = a.n + " · " + when;
+    $("dockVal").textContent = money(month) + " al mes";
+    renderBill();
+  }
+
+  function renderBill(){
+    var ul = $("billList"); ul.innerHTML = "";
+    var rows = S.list.map(function(it){ return {it:it, c:costMonth(it.w, it.minutes, it.days)}; });
+    var total = rows.reduce(function(s, r){ return s + r.c; }, 0);
+    var max = rows.reduce(function(m, r){ return Math.max(m, r.c); }, 0);
+    rows.sort(function(x, y){ return y.c - x.c; });
+    rows.forEach(function(r, i){
+      var a = byId[r.it.app];
+      var li = document.createElement("li");
+      if (i === 0 && rows.length > 1) li.className = "top";
+      li.innerHTML = RV.icon(a.id) + '<div class="concept"><b></b><small></small></div><span class="amt"></span><button class="rm" type="button">Quitar</button><div class="bar" aria-hidden="true"><i></i></div>';
+      li.querySelector(".concept b").textContent = a.n;
+      li.querySelector(".concept small").textContent = cap(fmtTime(r.it.minutes)) + " · " + fmtDays(r.it.days);
+      li.querySelector(".amt").textContent = money(r.c);
+      li.querySelector(".bar i").style.width = (max > 0 ? Math.max(3, 100 * r.c / max) : 0) + "%";
+      var rm = li.querySelector(".rm"); rm.setAttribute("aria-label", "Quitar " + a.n + " de la factura");
+      rm.addEventListener("click", function(){ var k = S.list.indexOf(r.it); if (k > -1) S.list.splice(k, 1); RV.save(); renderBill(); });
+      ul.appendChild(li);
+    });
+    $("billEmpty").hidden = rows.length > 0;
+    $("billTotal").hidden = rows.length === 0;
+    $("totalVal").textContent = money(total);
+    var tn = $("topNote");
+    if (rows.length > 1 && total > 0){ tn.hidden = false; tn.textContent = "Lo que más te gasta es " + byId[rows[0].it.app].art + ": el " + Math.round(100 * rows[0].c / total) + " % del total."; }
+    else tn.hidden = true;
+  }
+
+  $("minus").addEventListener("click", function(){ state.minutes = stepDown(state.minutes); render(); });
+  $("plus").addEventListener("click", function(){ state.minutes = stepUp(state.minutes); render(); });
+  $("wattsToggle").addEventListener("click", function(){ openWatts($("wattsEdit").hidden); if (!$("wattsEdit").hidden) $("wattsInput").focus(); });
+  $("wattsInput").addEventListener("input", function(){ var v = parseInt(this.value, 10); if (v > 0 && v <= 10000){ state.watts[state.app] = v; render(); } });
+  $("priceToggle").addEventListener("click", function(){
+    var open = $("priceEdit").hidden;
+    $("priceEdit").hidden = !open; this.setAttribute("aria-expanded", open ? "true" : "false"); this.textContent = open ? "Cerrar" : "Cambiar";
+  });
+  ["pvpc","fijo","nose"].forEach(function(t){
+    $("tar-" + t).addEventListener("click", function(){ S.tarifa = t; RV.save(); render(); if (t === "fijo") $("fijoInput").focus(); });
+  });
+  $("fijoInput").addEventListener("input", function(){ var v = parseFloat(this.value.replace(",", ".")); if (v > 0 && v < 2){ S.fijo = v; RV.save(); render(); } });
+
+  var toastTimer = null;
+  $("addBtn").addEventListener("click", function(){
+    var a = byId[state.app];
+    S.list.push({app:a.id, minutes:state.minutes, days:state.days, w:wattsOf(a.id)});
+    RV.save(); renderBill();
+    var t = $("toast"); t.textContent = "Añadido a tu factura: " + a.n + ". Elige otro aparato para seguir sumando."; t.hidden = false;
+    var s = $("sheet"); s.classList.remove("flash"); void s.offsetWidth; s.classList.add("flash");
+    clearTimeout(toastTimer); toastTimer = setTimeout(function(){ t.hidden = true; }, 4500);
+  });
+
+  $("dockBtn").addEventListener("click", function(){ $("lectura").scrollIntoView({behavior: RV.reduced() ? "auto" : "smooth", block:"start"}); });
+  if ("IntersectionObserver" in window){
+    var seen = {lectura:false, factura:false};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
+      $("dock").hidden = seen.lectura || seen.factura;
+    }, {threshold:0.1});
+    io.observe($("lectura")); io.observe($("factura"));
+  }
+
+  RV.bindSize();
+  buildApps(); buildPresets(); buildDays(); buildBands();
+  openWatts(false);
+  render();
+  RV.loadPrices().then(function(d){
+    if (!d) return;
+    var m = RV.madrid(), keys = Object.keys(d.dias).sort();
+    var k = d.dias[m.date] ? m.date : keys.filter(function(x){ return x <= m.date; }).pop() || keys[keys.length - 1];
+    var arr = d.dias[k] || [];
+    if (!arr.length) return;
+    pvpcAvg = arr.reduce(function(s, v){ return s + v; }, 0) / arr.length * RV.taxFactor(d);
+    pvpcLoaded = k === m.date;
+    render();
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aviso legal · Revísalo</title>
+<meta name="description" content="Datos del titular y condiciones de uso de Revísalo.">
+<link rel="canonical" href="https://revisalaluz.es/aviso-legal.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#EDF0EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1411" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Revísalo">
+<meta property="og:title" content="Aviso legal · Revísalo">
+<meta property="og:description" content="Datos del titular y condiciones de uso de Revísalo.">
+<meta property="og:url" content="https://revisalaluz.es/aviso-legal.html">
+<meta property="og:image" content="https://revisalaluz.es/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Revísalo: la luz de hoy, en euros">
+<meta name="twitter:card" content="summary_large_image">
+<!-- GOOGLE ADSENSE: pega aquí, justo debajo de esta línea, el código que te da AdSense -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@500;700&display=swap">
+<style>
+/* Revísalo · concepto: el contador de la luz. Carcasa gris, pantalla LCD verdosa, escala de colores de la etiqueta energética. */
+:root{
+  --bg:#EDF0EC;
+  --surface:#FFFFFF;
+  --ink:#18221D;
+  --muted:#55615A;
+  --line:#D2D9D4;
+  --line-strong:#98A39D;
+  --sel:#18221D;
+  --sel-ink:#FFFFFF;
+  --housing:#E2E6E0;
+  --lcd:#C4D0A6;
+  --lcd-ink:#1C2512;
+  --amber:#A86B00;
+  --bad-ink:#B3261E;
+  --cheap:#187A43; --mid:#E2AE1C; --dear:#CF2F28;
+  --cheap-ink:#FFFFFF; --mid-ink:#18221D; --dear-ink:#FFFFFF;
+  --s1:#0E7F48; --s2:#4FA845; --s3:#B4CB2E; --s4:#F0CD1F; --s5:#EC8A24; --s6:#CF2F28;
+  --band-dark:#18221D; --band-light:#FFFFFF;
+  --fill:#FFE8A3; --fill-ink:#3A2A00;
+  --font-ui:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",Verdana,"Segoe UI",system-ui,sans-serif;
+  --font-num:"Red Hat Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:19px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1411; --surface:#171E1A; --ink:#E8EEE9; --muted:#A1ADA6; --line:#2B3530; --line-strong:#4D5A53;
+    --sel:#E8EEE9; --sel-ink:#0F1411; --housing:#1E2722; --lcd:#1A2513; --lcd-ink:#C6EE6A;
+    --amber:#F2B33D; --bad-ink:#FF8A80; --cheap:#2FA563; --mid:#E9B730; --dear:#C8372E; --cheap-ink:#0F1411;
+    --fill:#5A4500; --fill-ink:#FFE8A3;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1411; --surface:#171E1A; --ink:#E8EEE9; --muted:#A1ADA6; --line:#2B3530; --line-strong:#4D5A53;
+  --sel:#E8EEE9; --sel-ink:#0F1411; --housing:#1E2722; --lcd:#1A2513; --lcd-ink:#C6EE6A;
+  --amber:#F2B33D; --bad-ink:#FF8A80; --cheap:#2FA563; --mid:#E9B730; --dear:#C8372E; --cheap-ink:#0F1411;
+  --fill:#5A4500; --fill-ink:#FFE8A3;
+  color-scheme:dark;
+}
+:root.big-text{font-size:22px}
+:root{padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none !important}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--font-ui); font-size:1rem; line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:10px 56px;
+  -webkit-text-size-adjust:100%;
+}
+img,svg{max-width:100%}
+button{font:inherit; color:inherit}
+a{color:inherit; text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--amber); outline-offset:3px}
+
+.page{max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:36px}
+
+/* Cabecera */
+.masthead{
+  display:grid; grid-template-columns:auto 1fr auto; grid-template-areas:"brand nav size"; align-items:center; gap:10px 16px;
+  padding-block:6px 10px; border-bottom:2px solid var(--ink);
+}
+.brand{grid-area:brand; display:flex; align-items:center; gap:10px; text-decoration:none; min-height:48px}
+.brand svg{width:38px; height:38px; flex:none}
+.brand span{font-weight:800; font-size:1.45rem; letter-spacing:-0.02em; white-space:nowrap}
+.tabs{grid-area:nav; display:flex; gap:4px; justify-self:start}
+.tabs a{
+  text-decoration:none; font-weight:700; font-size:.95rem; min-height:44px; padding:0 14px; border-radius:10px;
+  display:flex; align-items:center; border:2px solid transparent; white-space:nowrap;
+}
+.tabs a:hover{border-color:var(--line-strong)}
+.tabs a[aria-current="page"]{background:var(--sel); color:var(--sel-ink)}
+.size-toggle{
+  grid-area:size; appearance:none; cursor:pointer; background:transparent; border:2px solid var(--line-strong); border-radius:10px;
+  min-height:44px; padding:4px 12px; font-weight:700; font-size:.85rem; display:flex; align-items:center; gap:8px;
+}
+.size-toggle .aa{font-weight:800; line-height:1; letter-spacing:-0.02em}
+.size-toggle .aa small{font-size:.7em}
+.size-toggle .aa b{font-size:1.15em}
+.size-toggle[aria-pressed="true"]{background:var(--sel); color:var(--sel-ink); border-color:var(--sel)}
+@media (max-width:719px){
+  .masthead{grid-template-columns:1fr auto; grid-template-areas:"brand size" "nav nav"}
+  .tabs{justify-self:stretch; display:grid; grid-template-columns:1fr 1fr; background:var(--surface); border:2px solid var(--line); border-radius:12px; padding:3px}
+  .tabs a{justify-content:center}
+  .size-toggle .txt-long{display:none}
+}
+@media (min-width:720px){ .size-toggle .txt-short{display:none} }
+
+/* Tipografía */
+.kicker{margin:0; font-family:var(--font-num); font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+h1{font-weight:800; font-size:clamp(2rem, 7vw, 3rem); line-height:1.04; letter-spacing:-0.025em; margin:0; text-wrap:balance}
+h2{font-weight:800; font-size:1.5rem; line-height:1.15; letter-spacing:-0.015em; margin:0; text-wrap:balance}
+.lead{margin:0; color:var(--muted); font-size:1.08rem; max-width:36rem; text-wrap:pretty}
+.intro{display:flex; flex-direction:column; gap:10px; max-width:42rem}
+.step{display:flex; flex-direction:column; gap:14px; scroll-margin-top:12px}
+.step-title{display:flex; flex-direction:column; gap:2px}
+.note{margin:0; color:var(--muted); font-size:.92rem; text-wrap:pretty}
+.fineprint{margin:0; color:var(--muted); font-size:.85rem; text-wrap:pretty}
+
+/* Controles */
+.panel{background:var(--surface); border:2px solid var(--line); border-radius:16px; padding:18px; display:flex; flex-direction:column; gap:14px}
+.chip{
+  appearance:none; cursor:pointer; background:transparent; border:2px solid var(--line); border-radius:10px;
+  padding:8px 13px; font-size:.92rem; font-weight:700; min-height:46px;
+}
+.chip:hover{border-color:var(--line-strong)}
+.chip[aria-pressed="true"]{background:var(--sel); color:var(--sel-ink); border-color:var(--sel)}
+.chip:disabled{opacity:.4; cursor:default}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.seg{display:grid; grid-template-columns:repeat(auto-fit, minmax(0,1fr)); gap:6px}
+.seg .chip{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0; padding:8px 6px; line-height:1.2; background:var(--surface); text-align:center}
+.seg .chip[aria-pressed="true"]{background:var(--sel)}
+.seg .chip small{font-family:var(--font-num); font-weight:500; font-size:.78rem}
+.link{appearance:none; cursor:pointer; background:none; border:0; padding:0; text-decoration:underline; text-underline-offset:3px; font-weight:700; font-size:.95rem; text-align:left; min-height:44px}
+.field{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.field input{
+  font:inherit; font-family:var(--font-num); font-size:1.25rem; font-weight:700; color:var(--ink); background:var(--bg);
+  border:2px solid var(--ink); border-radius:10px; width:7.5ch; padding:9px 11px;
+}
+.field label{font-weight:700}
+.btn{
+  appearance:none; cursor:pointer; background:var(--sel); color:var(--sel-ink); border:0; border-radius:12px; text-decoration:none;
+  padding:14px 16px; font-size:1.05rem; font-weight:800; min-height:58px; display:flex; align-items:center; justify-content:center; gap:10px;
+}
+.btn svg{width:22px; height:22px; flex:none}
+
+.grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:8px}
+@media (max-width:340px){ .grid{grid-template-columns:repeat(2, minmax(0,1fr))} }
+.tile{
+  appearance:none; cursor:pointer; background:var(--surface); border:2px solid var(--line); border-radius:12px;
+  min-height:96px; padding:10px 6px 8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+  text-align:center; font-size:.88rem; line-height:1.18; font-weight:700; hyphens:auto; overflow-wrap:break-word;
+}
+.tile svg{width:34px; height:34px}
+.tile:hover{border-color:var(--line-strong)}
+.tile[aria-pressed="true"]{background:var(--sel); color:var(--sel-ink); border-color:var(--sel)}
+@media (min-width:620px){ .tile{flex-direction:row; justify-content:flex-start; text-align:left; min-height:64px; padding:10px 12px; gap:12px; font-size:.92rem} .tile svg{flex:none; width:30px; height:30px} }
+.room{margin:6px 0 0; font-size:.85rem; font-weight:700; color:var(--muted)}
+
+/* Contador */
+.meter{background:var(--housing); border:2px solid var(--line-strong); border-radius:22px; padding:18px; display:flex; flex-direction:column; gap:16px; scroll-margin-top:12px}
+.meter-top{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.led{width:12px; height:12px; border-radius:50%; background:var(--amber); box-shadow:0 0 0 4px color-mix(in srgb, var(--amber) 22%, transparent); flex:none}
+.meter-cap{margin:-8px 0 0; color:var(--muted); font-weight:700; font-size:.92rem}
+.lcd{background:var(--lcd); color:var(--lcd-ink); border-radius:10px; padding:12px 16px 10px; box-shadow:inset 0 3px 0 rgba(0,0,0,.10), inset 0 0 0 2px rgba(0,0,0,.06)}
+.lcd-num{text-align:right; font-family:var(--font-num); font-weight:700; font-size:clamp(2.8rem, 14vw, 3.7rem); line-height:1; letter-spacing:-0.02em}
+.lcd-unit{text-align:right; font-weight:700; font-size:.92rem; margin-top:4px}
+.reads{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); margin:0}
+.reads div{padding:0 10px; border-left:2px solid var(--line-strong); min-width:0}
+.reads div:first-child{padding-left:0; border-left:0}
+.reads dt{font-size:.78rem; color:var(--muted); font-weight:700; line-height:1.2}
+.reads dd{margin:4px 0 0; font-family:var(--font-num); font-weight:700; font-size:1.05rem}
+.reads dd small{display:block; font-family:var(--font-ui); font-size:.78rem; color:var(--muted); font-weight:700}
+.price-row{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; border-top:2px solid var(--line-strong); padding-top:10px; font-size:.92rem}
+.price-row b{white-space:nowrap}
+.price-edit{display:flex; flex-direction:column; gap:10px}
+.q{font-weight:700; margin:0}
+
+/* Preguntas */
+.faq{display:flex; flex-direction:column; gap:14px; max-width:44rem}
+.faq-list{border-top:2px solid var(--ink)}
+details.qa{border-bottom:1px solid var(--line-strong)}
+details.qa summary{cursor:pointer; list-style:none; font-weight:700; padding:14px 0; min-height:54px; display:flex; justify-content:space-between; align-items:center; gap:16px}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:"+"; font-family:var(--font-num); font-weight:700; font-size:1.4rem; line-height:1; flex:none}
+details.qa[open] summary::after{content:"−"}
+details.qa p{margin:0 0 16px; max-width:65ch; text-wrap:pretty}
+
+footer{border-top:2px solid var(--ink); padding-top:16px; display:flex; flex-direction:column; gap:10px; color:var(--muted); font-size:.88rem}
+footer nav{display:flex; flex-wrap:wrap; gap:6px 20px}
+footer nav a{color:var(--ink); font-weight:700; min-height:44px; display:inline-flex; align-items:center}
+footer p{margin:0; max-width:46rem}
+
+.fill{background:var(--fill); color:var(--fill-ink); padding:0 .25em; border-radius:4px; font-weight:700}
+
+@media (prefers-reduced-motion: no-preference){
+  .tile, .chip, .tabs a{transition:background-color .15s, border-color .15s, color .15s}
+}
+
+
+article{display:flex; flex-direction:column; gap:10px; max-width:44rem}
+article h1{font-size:clamp(1.9rem,6vw,2.5rem)}
+article h2{font-size:1.25rem; margin-top:10px}
+article p, article ul{margin:0; max-width:65ch; text-wrap:pretty}
+article a{overflow-wrap:anywhere}
+.meta{color:var(--muted); font-family:var(--font-num); font-size:.85rem}
+
+</style>
+</head>
+<body>
+<div class="page" lang="es">
+  <header class="masthead">
+    <a class="brand" href="./" aria-label="Revísalo, inicio">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="var(--ink)"/>
+        <rect x="6.5" y="8" width="27" height="14" rx="2.5" fill="var(--lcd)"/>
+        <path d="M24.5 11.6a4.4 4.4 0 1 0 0 6.8M17 14h6M17 16.4h6" fill="none" stroke="var(--lcd-ink)" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="11" cy="30" r="2.4" fill="var(--amber)"/>
+        <path d="M17.5 30h15" stroke="var(--lcd)" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span>Revísalo</span>
+    </a>
+    <nav class="tabs" aria-label="Secciones">
+      <a href="./">La luz hoy</a>
+      <a href="calculadora.html">Calculadora de gasto</a>
+    </nav>
+    <button class="size-toggle" id="sizeBtn" type="button" aria-pressed="false"><span class="aa" aria-hidden="true"><small>A</small><b>A</b></span><span class="txt-long">Letra más grande</span><span class="txt-short">Letra</span></button>
+  </header>
+
+  <main><article>
+<h1>Aviso legal</h1>
+<p class="meta">Actualizado el 27 de octubre de 2026</p>
+<h2>Titular de la web</h2>
+<p>En cumplimiento de la Ley 34/2002 de Servicios de la Sociedad de la Información y de Comercio Electrónico, te informamos de que esta web pertenece a:</p>
+<ul>
+<li>Titular: <mark class="fill">[Tu nombre y apellidos]</mark></li>
+<li>NIF: <mark class="fill">[Tu NIF]</mark></li>
+<li>Domicilio: <mark class="fill">[Tu dirección o la localidad]</mark></li>
+<li>Correo de contacto: <mark class="fill">[tu correo de contacto]</mark></li>
+</ul>
+<h2>Para qué sirve esta web</h2>
+<p>Revísalo es una web gratuita que muestra el precio de la luz de la tarifa regulada por horas y estima cuánto cuesta usar los aparatos de casa.</p>
+<h2>Los resultados son orientativos</h2>
+<p>Los precios proceden de Red Eléctrica de España y se muestran con IVA e impuesto eléctrico. Los cálculos usan consumos medios de cada aparato. Lo que pagues en realidad depende de tu aparato, de tu tarifa y de cómo lo uses, y no nos hacemos responsables de decisiones tomadas solo a partir de estos resultados.</p>
+<h2>Contenido y enlaces</h2>
+<p>Los textos, el diseño y el código de esta web son de su titular. Puedes enlazar a cualquier página de Revísalo. Las webs externas a las que enlazamos tienen sus propias condiciones y no somos responsables de su contenido.</p>
+<h2>Ley aplicable</h2>
+<p>Esta web se rige por la legislación española.</p>
+  </article></main>
+  <footer>
+    <nav aria-label="Información">
+      <a href="./">La luz hoy</a>
+      <a href="calculadora.html">Calculadora de gasto</a>
+      <a href="sobre.html">Quiénes somos</a>
+      <a href="privacidad.html">Privacidad y cookies</a>
+      <a href="aviso-legal.html">Aviso legal</a>
+    </nav>
+    <p>Precios de la tarifa regulada (PVPC) publicados por Red Eléctrica de España, con IVA e impuesto eléctrico incluidos. Los cálculos son orientativos y no sustituyen a tu factura.</p>
+  </footer>
+
+</div>
+<script>
+var RV = (function(){
+  var ICONS = {
+    estufa:'<rect x="5" y="14" width="22" height="12" rx="2"/><path d="M9 18h14M9 22h14M8 26v2.5M24 26v2.5M11 10.5c-1.2-1.2 1.2-2.4 0-3.6M16 10.5c-1.2-1.2 1.2-2.4 0-3.6M21 10.5c-1.2-1.2 1.2-2.4 0-3.6"/>',
+    radiador:'<rect x="5.5" y="6" width="4.2" height="19" rx="2.1"/><rect x="10.6" y="6" width="4.2" height="19" rx="2.1"/><rect x="15.7" y="6" width="4.2" height="19" rx="2.1"/><rect x="20.8" y="6" width="4.2" height="19" rx="2.1"/><path d="M7.6 25v3M22.9 25v3M25 10h2.5"/>',
+    brasero:'<ellipse cx="16" cy="21" rx="11" ry="4.5"/><path d="M5 21v1.5C5 25 9.9 27 16 27s11-2 11-4.5V21M11.5 21h9M11 13c-1.2-1.2 1.2-2.4 0-3.6M16 13c-1.2-1.2 1.2-2.4 0-3.6M21 13c-1.2-1.2 1.2-2.4 0-3.6"/>',
+    manta:'<rect x="3.5" y="6" width="19" height="17" rx="2.5"/><path d="M7.5 11l1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8M7.5 17l1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8M22.5 18h2.5a2 2 0 0 1 2 2v3.5"/><rect x="24.5" y="23.5" width="5" height="5" rx="1"/>',
+    aire:'<rect x="3" y="6" width="26" height="12" rx="3"/><path d="M7 14h18M10 22l-1.5 4.5M16 22v4.5M22 22l1.5 4.5"/>',
+    ventilador:'<circle cx="16" cy="13" r="9.5"/><circle cx="16" cy="13" r="1.4"/><path d="M16 11.6V5.5M17.2 13.7l5.3 3M14.8 13.7l-5.3 3M16 22.5v5M10.5 28.5h11"/>',
+    nevera:'<rect x="8" y="3" width="16" height="26" rx="2.5"/><path d="M8 12h16M12 6.5v2.5M12 15.5v5"/>',
+    horno:'<rect x="4" y="5" width="24" height="22" rx="2.5"/><path d="M4 11h24M8.5 8h.01M12 8h.01M19 8h5"/><rect x="9" y="15" width="14" height="8" rx="1.5"/>',
+    vitro:'<rect x="3" y="6" width="26" height="20" rx="2.5"/><circle cx="10.5" cy="12.5" r="3.5"/><circle cx="21.5" cy="12" r="2.5"/><circle cx="10.5" cy="20.5" r="2.5"/><circle cx="21.5" cy="20" r="3.5"/>',
+    micro:'<rect x="3" y="7" width="26" height="18" rx="2.5"/><rect x="6.5" y="10.5" width="14" height="11" rx="1.5"/><path d="M25 11.5h.01M25 15h.01M23.5 21h3"/>',
+    freidora:'<path d="M10 4h12a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z"/><path d="M6 16h20M13 21.5h6"/><circle cx="16" cy="10" r="2.5"/>',
+    cafetera:'<path d="M6 13h15v6a7 7 0 0 1-7 7h-1a7 7 0 0 1-7-7z"/><path d="M21 15h1.5a3 3 0 0 1 0 6h-2M11 4.5c-1.2 1.2 1.2 2.4 0 3.6M16 4.5c-1.2 1.2 1.2 2.4 0 3.6"/>',
+    lavadora:'<rect x="5" y="3" width="22" height="26" rx="2.5"/><path d="M5 9h22M9 6h.01M12.5 6h.01"/><circle cx="16" cy="18.5" r="6"/><path d="M12.6 19.4c1.2 1.3 3.2 1.7 4.8 1"/>',
+    secadora:'<rect x="5" y="3" width="22" height="26" rx="2.5"/><path d="M5 9h22M9 6h.01M12.5 6h.01"/><circle cx="16" cy="18.5" r="6"/><path d="M14 15.8c-.8.8.8 1.6 0 2.4s.8 1.6 0 2.4M18 15.8c-.8.8.8 1.6 0 2.4s.8 1.6 0 2.4"/>',
+    lavavajillas:'<rect x="5" y="3" width="22" height="26" rx="2.5"/><path d="M5 9h22M9 6h.01M12.5 6h.01M9.5 25h13M12 25v-8M16 25v-10.5M20 25v-8"/>',
+    plancha:'<path d="M3.5 24h22.5a2 2 0 0 0 2-2v-1.5a8.5 8.5 0 0 0-8.5-8.5h-6C7.5 12 3.5 17 3.5 24z"/><path d="M14.5 12V8.5A1.5 1.5 0 0 1 16 7h7.5A1.5 1.5 0 0 1 25 8.5v5.2"/>',
+    termo:'<rect x="9" y="3" width="14" height="21" rx="5"/><path d="M13 24v5M19 24v5M16 10l1.6-1.6"/><circle cx="16" cy="10" r="3"/>',
+    secador:'<circle cx="10" cy="11" r="6.5"/><path d="M16 8h11v6H16M8.5 17.5L7 27.5h4.5l1.6-8.6"/><circle cx="10" cy="11" r="2"/>',
+    tele:'<rect x="3" y="5" width="26" height="17" rx="2"/><path d="M16 22v5M11 27.5h10"/>',
+    ordenador:'<rect x="6" y="6" width="20" height="14" rx="1.5"/><path d="M3 25.5h26M6 20l-3 5.5M26 20l3 5.5"/>',
+    bombilla:'<path d="M16 3.5a8 8 0 0 0-5 14.2c1 .8 1.5 1.9 1.5 3.1V22h7v-1.2c0-1.2.5-2.3 1.5-3.1A8 8 0 0 0 16 3.5z"/><path d="M12.5 25.5h7M14 28.5h4"/>',
+    bombillavieja:'<path d="M16 3.5a8 8 0 0 0-5 14.2c1 .8 1.5 1.9 1.5 3.1V22h7v-1.2c0-1.2.5-2.3 1.5-3.1A8 8 0 0 0 16 3.5z"/><path d="M12.5 25.5h7M14 28.5h4M13 14.5l1.5-3 1.5 3 1.5-3 1.5 3"/>',
+    movil:'<rect x="9" y="3" width="14" height="26" rx="2.5"/><path d="M14 25.5h4M17.2 9.5l-3 5h4l-3 5"/>',
+    coche:'<path d="M5.5 19l2.6-6.6A3 3 0 0 1 10.9 10.5h10.2a3 3 0 0 1 2.8 1.9L26.5 19"/><rect x="3" y="19" width="26" height="7" rx="2"/><path d="M7.5 26v2.5M24.5 26v2.5M8 22.5h.01M24 22.5h.01M17 12.5l-2 3.2h3l-2 3.2"/>',
+    otro:'<path d="M12 3v6M20 3v6M8 9h16v5a8 8 0 0 1-16 0z"/><path d="M16 22v7"/>'
+  };
+  function icon(id){ return '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[id] || ICONS.otro) + '</svg>'; }
+
+  /* Ajustes guardados en este navegador */
+  var KEY = "revisalo";
+  var settings = { tarifa:"pvpc", fijo:0.165, big:false, list:[] };
+  try {
+    var s = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (s && typeof s === "object"){
+      if (s.tarifa === "pvpc" || s.tarifa === "fijo" || s.tarifa === "nose") settings.tarifa = s.tarifa;
+      if (typeof s.fijo === "number" && s.fijo > 0 && s.fijo < 2) settings.fijo = s.fijo;
+      settings.big = !!s.big;
+      if (Array.isArray(s.list)) settings.list = s.list;
+    }
+  } catch(e) {}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(settings)); } catch(e) {} }
+
+  function applySize(){
+    document.documentElement.classList.toggle("big-text", settings.big);
+    var b = document.getElementById("sizeBtn");
+    if (b) b.setAttribute("aria-pressed", settings.big ? "true" : "false");
+  }
+  function bindSize(){
+    var b = document.getElementById("sizeBtn");
+    if (b) b.addEventListener("click", function(){ settings.big = !settings.big; applySize(); save(); });
+    applySize();
+  }
+
+  /* Fechas y horas siempre en hora de España peninsular */
+  var partsFmt = new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/Madrid", year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit", hourCycle:"h23"});
+  function madrid(){
+    var o = {};
+    partsFmt.formatToParts(new Date()).forEach(function(p){ o[p.type] = p.value; });
+    return { date:o.year + "-" + o.month + "-" + o.day, h:parseInt(o.hour, 10) % 24, m:parseInt(o.minute, 10) };
+  }
+  function addDays(ymd, n){
+    var p = ymd.split("-"), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2] + n));
+    return d.toISOString().slice(0, 10);
+  }
+  var DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+  var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  function dayLabel(ymd){
+    var p = ymd.split("-"), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]));
+    return DIAS[d.getUTCDay()] + " " + (+p[2]) + " de " + MESES[+p[1] - 1];
+  }
+
+  var n2 = new Intl.NumberFormat("es-ES", {minimumFractionDigits:2, maximumFractionDigits:2});
+  var n3 = new Intl.NumberFormat("es-ES", {minimumFractionDigits:3, maximumFractionDigits:3});
+  var n0 = new Intl.NumberFormat("es-ES", {maximumFractionDigits:0});
+  function num(v){ return v >= 100 ? n0.format(v) : n2.format(v); }
+  function money(v){ return num(v) + " €"; }
+  /* céntimos para importes pequeños: más fácil de entender */
+  function cost(v){ return v < 1 ? n0.format(Math.round(v * 100)) + " cént." : money(v); }
+  function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+  function hh(h){ return (h < 10 ? "0" : "") + h + ":00"; }
+
+  /* Precios: archivo actualizado cada día; si no carga, los últimos incluidos en la página */
+  var FALLBACK = null;
+  function loadPrices(){
+    var ok = function(d){ return d && d.dias && typeof d.dias === "object" && Object.keys(d.dias).length; };
+    if (!window.fetch) return Promise.resolve(FALLBACK);
+    return fetch("datos/precios.json", {cache:"no-store"})
+      .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(d){ return ok(d) ? d : FALLBACK; })
+      .catch(function(){ return FALLBACK; });
+  }
+  function taxFactor(d){
+    var t = (d && d.impuestos) || {};
+    return (1 + (typeof t.iee === "number" ? t.iee : 0.0511269632)) * (1 + (typeof t.iva === "number" ? t.iva : 0.21));
+  }
+  function reduced(){ try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e){ return true; } }
+
+  return { icon:icon, settings:settings, save:save, bindSize:bindSize, madrid:madrid, addDays:addDays, dayLabel:dayLabel,
+           n2:n2, n3:n3, n0:n0, num:num, money:money, cost:cost, cap:cap, hh:hh, loadPrices:loadPrices, taxFactor:taxFactor, reduced:reduced };
+})();
+
+RV.bindSize();
+</script>
+
+</body>
+</html>

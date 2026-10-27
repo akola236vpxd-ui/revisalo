@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Precio de la luz hoy en euros: ¿cuándo pongo la lavadora? · Revísalo</title>
+<meta name="description" content="Precio de la luz hoy por horas, en euros y sin líos: cuánto te cuesta poner ahora la lavadora, el horno o la secadora y a qué hora te sale más barato.">
+<link rel="canonical" href="https://revisalaluz.es/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#EDF0EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1411" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Revísalo">
+<meta property="og:title" content="Precio de la luz hoy en euros: ¿cuándo pongo la lavadora? · Revísalo">
+<meta property="og:description" content="Precio de la luz hoy por horas, en euros y sin líos: cuánto te cuesta poner ahora la lavadora, el horno o la secadora y a qué hora te sale más barato.">
+<meta property="og:url" content="https://revisalaluz.es/">
+<meta property="og:image" content="https://revisalaluz.es/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Revísalo: la luz de hoy, en euros">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Revísalo", "url": "https://revisalaluz.es/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Cualquiera", "inLanguage": "es-ES", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}</script>
+<!-- GOOGLE ADSENSE: pega aquí, justo debajo de esta línea, el código que te da AdSense -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@500;700&display=swap">
+<style>
+/* Revísalo · concepto: el contador de la luz. Carcasa gris, pantalla LCD verdosa, escala de colores de la etiqueta energética. */
+:root{
+  --bg:#EDF0EC;
+  --surface:#FFFFFF;
+  --ink:#18221D;
+  --muted:#55615A;
+  --line:#D2D9D4;
+  --line-strong:#98A39D;
+  --sel:#18221D;
+  --sel-ink:#FFFFFF;
+  --housing:#E2E6E0;
+  --lcd:#C4D0A6;
+  --lcd-ink:#1C2512;
+  --amber:#A86B00;
+  --bad-ink:#B3261E;
+  --cheap:#187A43; --mid:#E2AE1C; --dear:#CF2F28;
+  --cheap-ink:#FFFFFF; --mid-ink:#18221D; --dear-ink:#FFFFFF;
+  --s1:#0E7F48; --s2:#4FA845; --s3:#B4CB2E; --s4:#F0CD1F; --s5:#EC8A24; --s6:#CF2F28;
+  --band-dark:#18221D; --band-light:#FFFFFF;
+  --fill:#FFE8A3; --fill-ink:#3A2A00;
+  --font-ui:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",Verdana,"Segoe UI",system-ui,sans-serif;
+  --font-num:"Red Hat Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:19px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1411; --surface:#171E1A; --ink:#E8EEE9; --muted:#A1ADA6; --line:#2B3530; --line-strong:#4D5A53;
+    --sel:#E8EEE9; --sel-ink:#0F1411; --housing:#1E2722; --lcd:#1A2513; --lcd-ink:#C6EE6A;
+    --amber:#F2B33D; --bad-ink:#FF8A80; --cheap:#2FA563; --mid:#E9B730; --dear:#C8372E; --cheap-ink:#0F1411;
+    --fill:#5A4500; --fill-ink:#FFE8A3;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1411; --surface:#171E1A; --ink:#E8EEE9; --muted:#A1ADA6; --line:#2B3530; --line-strong:#4D5A53;
+  --sel:#E8EEE9; --sel-ink:#0F1411; --housing:#1E2722; --lcd:#1A2513; --lcd-ink:#C6EE6A;
+  --amber:#F2B33D; --bad-ink:#FF8A80; --cheap:#2FA563; --mid:#E9B730; --dear:#C8372E; --cheap-ink:#0F1411;
+  --fill:#5A4500; --fill-ink:#FFE8A3;
+  color-scheme:dark;
+}
+:root.big-text{font-size:22px}
+:root{padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none !important}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--font-ui); font-size:1rem; line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:10px 56px;
+  -webkit-text-size-adjust:100%;
+}
+img,svg{max-width:100%}
+button{font:inherit; color:inherit}
+a{color:inherit; text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--amber); outline-offset:3px}
+
+.page{max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:36px}
+
+/* Cabecera */
+.masthead{
+  display:grid; grid-template-columns:auto 1fr auto; grid-template-areas:"brand nav size"; align-items:center; gap:10px 16px;
+  padding-block:6px 10px; border-bottom:2px solid var(--ink);
+}
+.brand{grid-area:brand; display:flex; align-items:center; gap:10px; text-decoration:none; min-height:48px}
+.brand svg{width:38px; height:38px; flex:none}
+.brand span{font-weight:800; font-size:1.45rem; letter-spacing:-0.02em; white-space:nowrap}
+.tabs{grid-area:nav; display:flex; gap:4px; justify-self:start}
+.tabs a{
+  text-decoration:none; font-weight:700; font-size:.95rem; min-height:44px; padding:0 14px; border-radius:10px;
+  display:flex; align-items:center; border:2px solid transparent; white-space:nowrap;
+}
+.tabs a:hover{border-color:var(--line-strong)}
+.tabs a[aria-current="page"]{background:var(--sel); color:var(--sel-ink)}
+.size-toggle{
+  grid-area:size; appearance:none; cursor:pointer; background:transparent; border:2px solid var(--line-strong); border-radius:10px;
+  min-height:44px; padding:4px 12px; font-weight:700; font-size:.85rem; display:flex; align-items:center; gap:8px;
+}
+.size-toggle .aa{font-weight:800; line-height:1; letter-spacing:-0.02em}
+.size-toggle .aa small{font-size:.7em}
+.size-toggle .aa b{font-size:1.15em}
+.size-toggle[aria-pressed="true"]{background:var(--sel); color:var(--sel-ink); border-color:var(--sel)}
+@media (max-width:719px){
+  .masthead{grid-template-columns:1fr auto; grid-template-areas:"brand size" "nav nav"}
+  .tabs{justify-self:stretch; display:grid; grid-template-columns:1fr 1fr; background:var(--surface); border:2px solid var(--line); border-radius:12px; padding:3px}
+  .tabs a{justify-content:center}
+  .size-toggle .txt-long{display:none}
+}
+@media (min-width:720px){ .size-toggle .txt-short{display:none} }
+
+/* Tipografía */
+.kicker{margin:0; font-family:var(--font-num); font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+h1{font-weight:800; font-size:clamp(2rem, 7vw, 3rem); line-height:1.04; letter-spacing:-0.025em; margin:0; text-wrap:balance}
+h2{font-weight:800; font-size:1.5rem; line-height:1.15; letter-spacing:-0.015em; margin:0; text-wrap:balance}
+.lead{margin:0; color:var(--muted); font-size:1.08rem; max-width:36rem; text-wrap:pretty}
+.intro{display:flex; flex-direction:column; gap:10px; max-width:42rem}
+.step{display:flex; flex-direction:column; gap:14px; scroll-margin-top:12px}
+.step-title{display:flex; flex-direction:column; gap:2px}
+.note{margin:0; color:var(--muted); font-size:.92rem; text-wrap:pretty}
+.fineprint{margin:0; color:var(--muted); font-size:.85rem; text-wrap:pretty}
+
+/* Controles */
+.panel{background:var(--surface); border:2px solid var(--line); border-radius:16px; padding:18px; display:flex; flex-direction:column; gap:14px}
+.chip{
+  appearance:none; cursor:pointer; background:transparent; border:2px solid var(--line); border-radius:10px;
+  padding:8px 13px; font-size:.92rem; font-weight:700; min-height:46px;
+}
+.chip:hover{border-color:var(--line-strong)}
+.chip[aria-pressed="true"]{background:var(--sel); color:var(--sel-ink); border-color:var(--sel)}
+.chip:disabled{opacity:.4; cursor:default}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.seg{display:grid; grid-template-columns:repeat(auto-fit, minmax(0,1fr)); gap:6px}
+.seg .chip{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0; padding:8px 6px; line-height:1.2; background:var(--surface); text-align:center}
+.seg .chip[aria-pressed="true"]{background:var(--sel)}
+.seg .chip small{font-family:var(--font-num); font-weight:500; font-size:.78rem}
+.link{appearance:none; cursor:pointer; background:none; border:0; padding:0; text-decoration:underline; text-underline-offset:3px; font-weight:700; font-size:.95rem; text-align:left; min-height:44px}
+.field{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.field input{
+  font:inherit; font-family:var(--font-num); font-size:1.25rem; font-weight:700; color:var(--ink); background:var(--bg);
+  border:2px solid var(--ink); border-radius:10px; width:7.5ch; padding:9px 11px;
+}
+.field label{font-weight:700}
+.btn{
+  appearance:none; cursor:pointer; background:var(--sel); color:var(--sel-ink); border:0; border-radius:12px; text-decoration:none;
+  padding:14px 16px; font-size:1.05rem; font-weight:800; min-height:58px; display:flex; align-items:center; justify-content:center; gap:10px;
+}
+.btn svg{width:22px; height:22px; flex:none}
+
+.grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:8px}
+@media (max-width:340px){ .grid{grid-template-columns:repeat(2, minmax(0,1fr))} }
+.tile{
+  appearance:none; cursor:pointer; background:var(--surface); border:2px solid var(--line); border-radius:12px;
+  min-height:96px; padding:10px 6px 8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+  text-align:center; font-size:.88rem; line-height:1.18; font-weight:700; hyphens:auto; overflow-wrap:break-word;
+}
+.tile svg{width:34px; height:34px}
+.tile:hover{border-color:var(--line-strong)}
+.tile[aria-pressed="true"]{background:var(--sel); color:var(--sel-ink); border-color:var(--sel)}
+@media (min-width:620px){ .tile{flex-direction:row; justify-content:flex-start; text-align:left; min-height:64px; padding:10px 12px; gap:12px; font-size:.92rem} .tile svg{flex:none; width:30px; height:30px} }
+.room{margin:6px 0 0; font-size:.85rem; font-weight:700; color:var(--muted)}
+
+/* Contador */
+.meter{background:var(--housing); border:2px solid var(--line-strong); border-radius:22px; padding:18px; display:flex; flex-direction:column; gap:16px; scroll-margin-top:12px}
+.meter-top{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.led{width:12px; height:12px; border-radius:50%; background:var(--amber); box-shadow:0 0 0 4px color-mix(in srgb, var(--amber) 22%, transparent); flex:none}
+.meter-cap{margin:-8px 0 0; color:var(--muted); font-weight:700; font-size:.92rem}
+.lcd{background:var(--lcd); color:var(--lcd-ink); border-radius:10px; padding:12px 16px 10px; box-shadow:inset 0 3px 0 rgba(0,0,0,.10), inset 0 0 0 2px rgba(0,0,0,.06)}
+.lcd-num{text-align:right; font-family:var(--font-num); font-weight:700; font-size:clamp(2.8rem, 14vw, 3.7rem); line-height:1; letter-spacing:-0.02em}
+.lcd-unit{text-align:right; font-weight:700; font-size:.92rem; margin-top:4px}
+.reads{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); margin:0}
+.reads div{padding:0 10px; border-left:2px solid var(--line-strong); min-width:0}
+.reads div:first-child{padding-left:0; border-left:0}
+.reads dt{font-size:.78rem; color:var(--muted); font-weight:700; line-height:1.2}
+.reads dd{margin:4px 0 0; font-family:var(--font-num); font-weight:700; font-size:1.05rem}
+.reads dd small{display:block; font-family:var(--font-ui); font-size:.78rem; color:var(--muted); font-weight:700}
+.price-row{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; border-top:2px solid var(--line-strong); padding-top:10px; font-size:.92rem}
+.price-row b{white-space:nowrap}
+.price-edit{display:flex; flex-direction:column; gap:10px}
+.q{font-weight:700; margin:0}
+
+/* Preguntas */
+.faq{display:flex; flex-direction:column; gap:14px; max-width:44rem}
+.faq-list{border-top:2px solid var(--ink)}
+details.qa{border-bottom:1px solid var(--line-strong)}
+details.qa summary{cursor:pointer; list-style:none; font-weight:700; padding:14px 0; min-height:54px; display:flex; justify-content:space-between; align-items:center; gap:16px}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:"+"; font-family:var(--font-num); font-weight:700; font-size:1.4rem; line-height:1; flex:none}
+details.qa[open] summary::after{content:"−"}
+details.qa p{margin:0 0 16px; max-width:65ch; text-wrap:pretty}
+
+footer{border-top:2px solid var(--ink); padding-top:16px; display:flex; flex-direction:column; gap:10px; color:var(--muted); font-size:.88rem}
+footer nav{display:flex; flex-wrap:wrap; gap:6px 20px}
+footer nav a{color:var(--ink); font-weight:700; min-height:44px; display:inline-flex; align-items:center}
+footer p{margin:0; max-width:46rem}
+
+.fill{background:var(--fill); color:var(--fill-ink); padding:0 .25em; border-radius:4px; font-weight:700}
+
+@media (prefers-reduced-motion: no-preference){
+  .tile, .chip, .tabs a{transition:background-color .15s, border-color .15s, color .15s}
+}
+
+
+/* Página: la luz hoy. Contador con la hora actual a la izquierda, la pregunta «¿cuándo pongo…?» a la derecha y la tira de 24 horas debajo. */
+.layout{display:grid; gap:36px; grid-template-columns:minmax(0,1fr); grid-template-areas:"ahora" "cuando" "horas" "promo"}
+#ahora{grid-area:ahora} #cuando{grid-area:cuando} #horas{grid-area:horas} #promo{grid-area:promo}
+@media (min-width:900px){
+  .layout{grid-template-columns:400px minmax(0,1fr); grid-template-areas:"ahora cuando" "horas horas" "promo promo"; align-items:start; column-gap:40px}
+}
+
+.notice{margin:0; background:var(--fill); color:var(--fill-ink); border-radius:10px; padding:10px 12px; font-size:.92rem; font-weight:700}
+.verdict{
+  margin:0; align-self:flex-start; display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:6px 14px 6px 10px;
+  font-weight:800; font-size:1.15rem; background:var(--surface); color:var(--ink);
+}
+.verdict::before{content:""; width:14px; height:14px; border-radius:50%; background:var(--line-strong)}
+.verdict[data-c="cheap"]{background:var(--cheap); color:var(--cheap-ink)}
+.verdict[data-c="mid"]{background:var(--mid); color:var(--mid-ink)}
+.verdict[data-c="dear"]{background:var(--dear); color:var(--dear-ink)}
+.verdict[data-c]::before{background:currentColor; opacity:.9}
+.sentence{margin:-6px 0 0; font-size:1.02rem; text-wrap:pretty}
+.next{margin:0; font-weight:700; font-size:.95rem; background:var(--surface); border-radius:10px; padding:10px 12px}
+
+/* ¿Cuándo pongo…? */
+.answer{gap:12px}
+.ans-cap{margin:0; color:var(--muted); font-weight:700; font-size:.92rem}
+.rows{display:flex; flex-direction:column; gap:10px}
+.row{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 12px; align-items:baseline}
+.row > span{font-size:.98rem}
+.row > span strong{font-weight:800}
+.row > b{font-family:var(--font-num); font-weight:700; font-size:1.2rem; white-space:nowrap}
+.row .meterbar{grid-column:1 / -1; height:10px; border-radius:99px; background:var(--bg); overflow:hidden}
+.row .meterbar i{display:block; height:100%; border-radius:99px; background:var(--line-strong)}
+.row.best .meterbar i{background:var(--cheap)}
+.row.worst .meterbar i{background:var(--dear)}
+.row.best > b{color:var(--cheap)}
+.save{margin:0; font-weight:800; font-size:1.1rem; text-wrap:pretty; border-top:2px dashed var(--line); padding-top:12px}
+.save em{font-style:normal; background:var(--cheap); color:var(--cheap-ink); border-radius:6px; padding:0 .3em}
+
+/* 24 horas */
+.day-tabs{max-width:420px}
+.chart{gap:10px}
+.legend{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:.85rem; font-weight:700; color:var(--muted)}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.legend i{width:12px; height:12px; border-radius:3px; display:inline-block}
+.plot{position:relative; padding-top:22px}
+.maxlab{position:absolute; top:0; left:0; font-family:var(--font-num); font-size:.75rem; color:var(--muted); font-weight:700}
+.bars{height:180px; display:flex; align-items:flex-end; gap:3px; border-top:1px dashed var(--line); border-bottom:2px solid var(--ink)}
+.bar{
+  appearance:none; cursor:pointer; border:0; padding:0; background:transparent; flex:1 1 0; min-width:0; height:100%;
+  display:flex; align-items:flex-end; position:relative; border-radius:4px 4px 0 0;
+}
+.bar i{display:block; width:100%; border-radius:4px 4px 0 0; background:var(--line-strong)}
+.bar.c-cheap i{background:var(--cheap)} .bar.c-mid i{background:var(--mid)} .bar.c-dear i{background:var(--dear)}
+.bar.past i{opacity:.35}
+.bar[aria-pressed="true"]{background:color-mix(in srgb, var(--ink) 8%, transparent)}
+.bar[aria-pressed="true"] i{box-shadow:0 0 0 2px var(--ink)}
+.bar.now::after{content:""; position:absolute; left:50%; bottom:-11px; transform:translateX(-50%); border:6px solid transparent; border-bottom-color:var(--ink); border-top:0}
+.axis{display:flex; gap:3px; font-family:var(--font-num); font-size:.72rem; color:var(--muted); margin-top:8px}
+.axis span{flex:1 1 0; min-width:0; text-align:left; white-space:nowrap; overflow:visible}
+.pick{margin:0; font-weight:700; background:var(--bg); border-radius:10px; padding:10px 12px; font-size:.98rem}
+.pick b{font-family:var(--font-num)}
+details.list summary{cursor:pointer; font-weight:700; min-height:48px; display:flex; align-items:center; text-decoration:underline; text-underline-offset:3px}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse; width:100%; font-size:.95rem}
+th, td{padding:8px 10px; border-bottom:1px solid var(--line); text-align:left}
+th{font-size:.8rem; color:var(--muted); font-weight:700}
+td.num{font-family:var(--font-num); font-weight:700; text-align:right; white-space:nowrap}
+th.num{text-align:right}
+tr.now-row td{background:color-mix(in srgb, var(--amber) 14%, transparent)}
+.tag{display:inline-block; border-radius:999px; padding:1px 10px; font-weight:700; font-size:.82rem}
+.tag.c-cheap{background:var(--cheap); color:var(--cheap-ink)} .tag.c-mid{background:var(--mid); color:var(--mid-ink)} .tag.c-dear{background:var(--dear); color:var(--dear-ink)}
+
+/* Enlace a la calculadora */
+.promo{display:grid; grid-template-columns:auto minmax(0,1fr); gap:6px 16px; align-items:center; background:var(--surface); border:2px solid var(--line); border-radius:16px; padding:18px}
+.promo > svg{width:48px; height:48px; grid-row:span 2}
+.promo h2{font-size:1.25rem}
+.promo p{margin:0; color:var(--muted)}
+.promo .btn{grid-column:1 / -1; margin-top:8px}
+@media (min-width:720px){ .promo{grid-template-columns:auto minmax(0,1fr) auto} .promo .btn{grid-column:auto; grid-row:1 / span 2; grid-column-start:3; margin:0} }
+</style>
+</head>
+<body>
+<div class="page" lang="es">
+  <header class="masthead">
+    <a class="brand" href="./" aria-label="Revísalo, inicio">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="var(--ink)"/>
+        <rect x="6.5" y="8" width="27" height="14" rx="2.5" fill="var(--lcd)"/>
+        <path d="M24.5 11.6a4.4 4.4 0 1 0 0 6.8M17 14h6M17 16.4h6" fill="none" stroke="var(--lcd-ink)" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="11" cy="30" r="2.4" fill="var(--amber)"/>
+        <path d="M17.5 30h15" stroke="var(--lcd)" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span>Revísalo</span>
+    </a>
+    <nav class="tabs" aria-label="Secciones">
+      <a href="./" aria-current="page">La luz hoy</a>
+      <a href="calculadora.html">Calculadora de gasto</a>
+    </nav>
+    <button class="size-toggle" id="sizeBtn" type="button" aria-pressed="false"><span class="aa" aria-hidden="true"><small>A</small><b>A</b></span><span class="txt-long">Letra más grande</span><span class="txt-short">Letra</span></button>
+  </header>
+
+
+  <div class="intro">
+    <p class="kicker" id="todayKicker">Hoy</p>
+    <h1>La luz de hoy, en euros</h1>
+    <p class="lead">Mira si ahora la luz está barata o cara, y cuánto te cuesta poner la lavadora, el horno o la secadora a cada hora.</p>
+  </div>
+
+  <main class="layout">
+    <section class="meter" id="ahora" aria-labelledby="h-now">
+      <div class="meter-top"><div class="step-title"><p class="kicker" id="nowKicker">Ahora</p><h2 id="h-now">La luz ahora</h2></div><span class="led" aria-hidden="true"></span></div>
+      <p class="notice" id="staleNote" hidden></p>
+      <div class="lcd" aria-live="polite" aria-atomic="true">
+        <div class="lcd-num" id="nowPrice">0,00</div>
+        <div class="lcd-unit" id="nowUnit">€ por kWh, con impuestos</div>
+      </div>
+      <p class="verdict" id="verdict">Cargando</p>
+      <p class="sentence" id="nowSentence"></p>
+      <dl class="reads" id="reads">
+        <div><dt>Más barata</dt><dd id="rMin">–</dd></div>
+        <div><dt>Más cara</dt><dd id="rMax">–</dd></div>
+        <div><dt>Media</dt><dd id="rAvg">–</dd></div>
+      </dl>
+      <p class="next" id="nextCheap"></p>
+      <div class="price-row">
+        <span>Tu tarifa: <b id="tarLabel">Regulada (PVPC)</b></span>
+        <button class="link" id="tarToggle" type="button" aria-expanded="false" aria-controls="tarEdit">Cambiar</button>
+      </div>
+      <div class="price-edit" id="tarEdit" hidden>
+        <p class="q">¿Qué tarifa tienes?</p>
+        <div class="seg" role="group" aria-label="Tipo de tarifa">
+          <button class="chip" type="button" id="tar-pvpc">Regulada<small>precio por horas</small></button>
+          <button class="chip" type="button" id="tar-fijo">Precio fijo<small>mercado libre</small></button>
+        </div>
+        <div class="field" id="fijoField" hidden>
+          <input id="fijoInput" type="text" inputmode="decimal" aria-describedby="fijoHint">
+          <label for="fijoInput">€ por kWh</label>
+        </div>
+        <p class="note" id="fijoHint">Si en tu factura pone «PVPC» o «precio voluntario para el pequeño consumidor», tienes la regulada. Si no, casi seguro tienes precio fijo: búscalo en tu factura como «término de energía».</p>
+      </div>
+    </section>
+
+    <section class="step" id="cuando" aria-labelledby="h-when">
+      <div class="step-title"><p class="kicker">Ahorra con la hora</p><h2 id="h-when">¿Cuándo pongo…?</h2></div>
+      <div class="grid" id="hApps" role="group" aria-label="Aparato"></div>
+      <div class="panel answer" id="answer" aria-live="polite">
+        <p class="ans-cap" id="ansCap"></p>
+        <div class="rows" id="ansRows">
+          <div class="row now"><span id="ansNowWhen">Si la pones ahora</span><b id="ansNow">–</b><div class="meterbar" aria-hidden="true"><i id="barNow"></i></div></div>
+          <div class="row best" id="rowBest"><span>A la mejor hora: <strong id="ansBestWhen">–</strong></span><b id="ansBest">–</b><div class="meterbar" aria-hidden="true"><i id="barBest"></i></div></div>
+          <div class="row worst" id="rowWorst"><span>A la peor hora: <strong id="ansWorstWhen">–</strong></span><b id="ansWorst">–</b><div class="meterbar" aria-hidden="true"><i id="barWorst"></i></div></div>
+        </div>
+        <p class="save" id="ansSave"></p>
+        <p class="note" id="ansMonth"></p>
+      </div>
+    </section>
+
+    <section class="step" id="horas" aria-labelledby="h-hours">
+      <div class="step-title"><p class="kicker">Hora a hora</p><h2 id="h-hours">Las 24 horas de hoy</h2></div>
+      <div class="seg day-tabs" role="group" aria-label="Día">
+        <button class="chip" type="button" id="tabD0" aria-pressed="true">Hoy<small id="tabD0s">–</small></button>
+        <button class="chip" type="button" id="tabD1" aria-pressed="false">Mañana<small id="tabD1s">sale hacia las 20:15</small></button>
+      </div>
+      <div class="panel chart">
+        <div class="legend" aria-hidden="true">
+          <span><i style="background:var(--cheap)"></i>Barata</span>
+          <span><i style="background:var(--mid)"></i>Normal</span>
+          <span><i style="background:var(--dear)"></i>Cara</span>
+        </div>
+        <div class="plot">
+          <span class="maxlab" id="maxLab"></span>
+          <div class="bars" id="bars" role="group" aria-label="Precio de cada hora. Toca una barra para ver su precio."></div>
+          <div class="axis" id="axis" aria-hidden="true"></div>
+        </div>
+        <p class="pick" id="pick" aria-live="polite"></p>
+        <p class="note" id="chartNote">Barata son las 8 horas más baratas del día y cara, las 8 más caras. Precios de la tarifa regulada con impuestos.</p>
+      </div>
+      <details class="list">
+        <summary>Ver la lista de las 24 horas</summary>
+        <div class="table-wrap"><table>
+          <thead><tr><th scope="col">Hora</th><th scope="col" class="num">€ por kWh</th><th scope="col">Cómo está</th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table></div>
+      </details>
+    </section>
+
+    <section class="promo" id="promo" aria-labelledby="h-promo">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="3"/><rect x="9.5" y="7" width="13" height="6" rx="1"/><path d="M11 18h.01M16 18h.01M21 18h.01M11 23h.01M16 23h.01M21 23h.01"/></svg>
+      <h2 id="h-promo">¿Cuánto gasta al mes cada aparato?</h2>
+      <p>Calcula lo que te cuesta la estufa, el radiador o la nevera, y suma tu factura de la luz.</p>
+      <a class="btn" href="calculadora.html">Abrir la calculadora</a>
+    </section>
+  </main>
+
+  <section class="faq" aria-labelledby="h-faq">
+    <h2 id="h-faq">Preguntas frecuentes</h2>
+    <div class="faq-list">
+      <details class="qa"><summary>¿Estos precios son los de mi factura?</summary>
+        <p>Solo si tienes la tarifa regulada, también llamada PVPC. En ella el precio cambia cada hora y es el que ves aquí, con IVA e impuesto eléctrico incluidos. Si tienes un precio fijo con una compañía del mercado libre, pagas lo mismo a cualquier hora: elígelo en «Tu tarifa» y te calculamos con tu precio.</p></details>
+      <details class="qa"><summary>¿Cómo sé si tengo la tarifa regulada?</summary>
+        <p>Mira tu factura. Si pone «PVPC» o «precio voluntario para el pequeño consumidor», la tienes. Suelen darla las comercializadoras de referencia, como Energía XXI, Curenergía o Comercializadora Regulada. Si tu contrato habla de un precio fijo por kWh, estás en el mercado libre.</p></details>
+      <details class="qa"><summary>¿Cuándo salen los precios de mañana?</summary>
+        <p>Red Eléctrica los publica cada día hacia las 20:15. A partir de esa hora puedes ver aquí los de mañana y planear la lavadora o el lavavajillas.</p></details>
+      <details class="qa"><summary>¿Por qué cambia tanto el precio de una hora a otra?</summary>
+        <p>Depende de cuánta electricidad se pide en cada momento y de cómo se produce. A mediodía suele haber mucha energía solar y baja; al caer la tarde, cuando todo el mundo llega a casa, sube. De madrugada y los fines de semana también suelen ser más baratos.</p></details>
+      <details class="qa"><summary>¿Qué incluye el precio que veis?</summary>
+        <p>El precio de la energía de la tarifa regulada, con sus peajes, más el impuesto eléctrico (5,11 %) y el IVA (21 %). No incluye la parte fija de la factura: la potencia contratada y el alquiler del contador, que pagas aunque no enciendas nada.</p></details>
+      <details class="qa"><summary>¿Cómo calculáis lo que cuesta poner la lavadora?</summary>
+        <p>Usamos lo que gasta de media cada aparato por uso. Por ejemplo, un lavado a 40 °C son unos 0,8 kWh repartidos en unas 2 horas. Lo multiplicamos por el precio de cada hora que dura. Tu aparato puede gastar algo más o algo menos según el modelo y el programa.</p></details>
+      <details class="qa"><summary>¿De dónde salen los datos?</summary>
+        <p>De Red Eléctrica de España, que publica cada día el precio de la tarifa regulada para la península, Baleares y Canarias. La web se actualiza sola en cuanto salen.</p></details>
+    </div>
+  </section>
+
+  <footer>
+    <nav aria-label="Información">
+      <a href="./">La luz hoy</a>
+      <a href="calculadora.html">Calculadora de gasto</a>
+      <a href="sobre.html">Quiénes somos</a>
+      <a href="privacidad.html">Privacidad y cookies</a>
+      <a href="aviso-legal.html">Aviso legal</a>
+    </nav>
+    <p>Precios de la tarifa regulada (PVPC) publicados por Red Eléctrica de España, con IVA e impuesto eléctrico incluidos. Los cálculos son orientativos y no sustituyen a tu factura.</p>
+  </footer>
+
+</div>
+
+<script>
+var RV = (function(){
+  var ICONS = {
+    estufa:'<rect x="5" y="14" width="22" height="12" rx="2"/><path d="M9 18h14M9 22h14M8 26v2.5M24 26v2.5M11 10.5c-1.2-1.2 1.2-2.4 0-3.6M16 10.5c-1.2-1.2 1.2-2.4 0-3.6M21 10.5c-1.2-1.2 1.2-2.4 0-3.6"/>',
+    radiador:'<rect x="5.5" y="6" width="4.2" height="19" rx="2.1"/><rect x="10.6" y="6" width="4.2" height="19" rx="2.1"/><rect x="15.7" y="6" width="4.2" height="19" rx="2.1"/><rect x="20.8" y="6" width="4.2" height="19" rx="2.1"/><path d="M7.6 25v3M22.9 25v3M25 10h2.5"/>',
+    brasero:'<ellipse cx="16" cy="21" rx="11" ry="4.5"/><path d="M5 21v1.5C5 25 9.9 27 16 27s11-2 11-4.5V21M11.5 21h9M11 13c-1.2-1.2 1.2-2.4 0-3.6M16 13c-1.2-1.2 1.2-2.4 0-3.6M21 13c-1.2-1.2 1.2-2.4 0-3.6"/>',
+    manta:'<rect x="3.5" y="6" width="19" height="17" rx="2.5"/><path d="M7.5 11l1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8M7.5 17l1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8 1.8 1.8 1.8-1.8M22.5 18h2.5a2 2 0 0 1 2 2v3.5"/><rect x="24.5" y="23.5" width="5" height="5" rx="1"/>',
+    aire:'<rect x="3" y="6" width="26" height="12" rx="3"/><path d="M7 14h18M10 22l-1.5 4.5M16 22v4.5M22 22l1.5 4.5"/>',
+    ventilador:'<circle cx="16" cy="13" r="9.5"/><circle cx="16" cy="13" r="1.4"/><path d="M16 11.6V5.5M17.2 13.7l5.3 3M14.8 13.7l-5.3 3M16 22.5v5M10.5 28.5h11"/>',
+    nevera:'<rect x="8" y="3" width="16" height="26" rx="2.5"/><path d="M8 12h16M12 6.5v2.5M12 15.5v5"/>',
+    horno:'<rect x="4" y="5" width="24" height="22" rx="2.5"/><path d="M4 11h24M8.5 8h.01M12 8h.01M19 8h5"/><rect x="9" y="15" width="14" height="8" rx="1.5"/>',
+    vitro:'<rect x="3" y="6" width="26" height="20" rx="2.5"/><circle cx="10.5" cy="12.5" r="3.5"/><circle cx="21.5" cy="12" r="2.5"/><circle cx="10.5" cy="20.5" r="2.5"/><circle cx="21.5" cy="20" r="3.5"/>',
+    micro:'<rect x="3" y="7" width="26" height="18" rx="2.5"/><rect x="6.5" y="10.5" width="14" height="11" rx="1.5"/><path d="M25 11.5h.01M25 15h.01M23.5 21h3"/>',
+    freidora:'<path d="M10 4h12a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z"/><path d="M6 16h20M13 21.5h6"/><circle cx="16" cy="10" r="2.5"/>',
+    cafetera:'<path d="M6 13h15v6a7 7 0 0 1-7 7h-1a7 7 0 0 1-7-7z"/><path d="M21 15h1.5a3 3 0 0 1 0 6h-2M11 4.5c-1.2 1.2 1.2 2.4 0 3.6M16 4.5c-1.2 1.2 1.2 2.4 0 3.6"/>',
+    lavadora:'<rect x="5" y="3" width="22" height="26" rx="2.5"/><path d="M5 9h22M9 6h.01M12.5 6h.01"/><circle cx="16" cy="18.5" r="6"/><path d="M12.6 19.4c1.2 1.3 3.2 1.7 4.8 1"/>',
+    secadora:'<rect x="5" y="3" width="22" height="26" rx="2.5"/><path d="M5 9h22M9 6h.01M12.5 6h.01"/><circle cx="16" cy="18.5" r="6"/><path d="M14 15.8c-.8.8.8 1.6 0 2.4s.8 1.6 0 2.4M18 15.8c-.8.8.8 1.6 0 2.4s.8 1.6 0 2.4"/>',
+    lavavajillas:'<rect x="5" y="3" width="22" height="26" rx="2.5"/><path d="M5 9h22M9 6h.01M12.5 6h.01M9.5 25h13M12 25v-8M16 25v-10.5M20 25v-8"/>',
+    plancha:'<path d="M3.5 24h22.5a2 2 0 0 0 2-2v-1.5a8.5 8.5 0 0 0-8.5-8.5h-6C7.5 12 3.5 17 3.5 24z"/><path d="M14.5 12V8.5A1.5 1.5 0 0 1 16 7h7.5A1.5 1.5 0 0 1 25 8.5v5.2"/>',
+    termo:'<rect x="9" y="3" width="14" height="21" rx="5"/><path d="M13 24v5M19 24v5M16 10l1.6-1.6"/><circle cx="16" cy="10" r="3"/>',
+    secador:'<circle cx="10" cy="11" r="6.5"/><path d="M16 8h11v6H16M8.5 17.5L7 27.5h4.5l1.6-8.6"/><circle cx="10" cy="11" r="2"/>',
+    tele:'<rect x="3" y="5" width="26" height="17" rx="2"/><path d="M16 22v5M11 27.5h10"/>',
+    ordenador:'<rect x="6" y="6" width="20" height="14" rx="1.5"/><path d="M3 25.5h26M6 20l-3 5.5M26 20l3 5.5"/>',
+    bombilla:'<path d="M16 3.5a8 8 0 0 0-5 14.2c1 .8 1.5 1.9 1.5 3.1V22h7v-1.2c0-1.2.5-2.3 1.5-3.1A8 8 0 0 0 16 3.5z"/><path d="M12.5 25.5h7M14 28.5h4"/>',
+    bombillavieja:'<path d="M16 3.5a8 8 0 0 0-5 14.2c1 .8 1.5 1.9 1.5 3.1V22h7v-1.2c0-1.2.5-2.3 1.5-3.1A8 8 0 0 0 16 3.5z"/><path d="M12.5 25.5h7M14 28.5h4M13 14.5l1.5-3 1.5 3 1.5-3 1.5 3"/>',
+    movil:'<rect x="9" y="3" width="14" height="26" rx="2.5"/><path d="M14 25.5h4M17.2 9.5l-3 5h4l-3 5"/>',
+    coche:'<path d="M5.5 19l2.6-6.6A3 3 0 0 1 10.9 10.5h10.2a3 3 0 0 1 2.8 1.9L26.5 19"/><rect x="3" y="19" width="26" height="7" rx="2"/><path d="M7.5 26v2.5M24.5 26v2.5M8 22.5h.01M24 22.5h.01M17 12.5l-2 3.2h3l-2 3.2"/>',
+    otro:'<path d="M12 3v6M20 3v6M8 9h16v5a8 8 0 0 1-16 0z"/><path d="M16 22v7"/>'
+  };
+  function icon(id){ return '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[id] || ICONS.otro) + '</svg>'; }
+
+  /* Ajustes guardados en este navegador */
+  var KEY = "revisalo";
+  var settings = { tarifa:"pvpc", fijo:0.165, big:false, list:[] };
+  try {
+    var s = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (s && typeof s === "object"){
+      if (s.tarifa === "pvpc" || s.tarifa === "fijo" || s.tarifa === "nose") settings.tarifa = s.tarifa;
+      if (typeof s.fijo === "number" && s.fijo > 0 && s.fijo < 2) settings.fijo = s.fijo;
+      settings.big = !!s.big;
+      if (Array.isArray(s.list)) settings.list = s.list;
+    }
+  } catch(e) {}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(settings)); } catch(e) {} }
+
+  function applySize(){
+    document.documentElement.classList.toggle("big-text", settings.big);
+    var b = document.getElementById("sizeBtn");
+    if (b) b.setAttribute("aria-pressed", settings.big ? "true" : "false");
+  }
+  function bindSize(){
+    var b = document.getElementById("sizeBtn");
+    if (b) b.addEventListener("click", function(){ settings.big = !settings.big; applySize(); save(); });
+    applySize();
+  }
+
+  /* Fechas y horas siempre en hora de España peninsular */
+  var partsFmt = new Intl.DateTimeFormat("en-CA", {timeZone:"Europe/Madrid", year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit", hourCycle:"h23"});
+  function madrid(){
+    var o = {};
+    partsFmt.formatToParts(new Date()).forEach(function(p){ o[p.type] = p.value; });
+    return { date:o.year + "-" + o.month + "-" + o.day, h:parseInt(o.hour, 10) % 24, m:parseInt(o.minute, 10) };
+  }
+  function addDays(ymd, n){
+    var p = ymd.split("-"), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2] + n));
+    return d.toISOString().slice(0, 10);
+  }
+  var DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+  var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  function dayLabel(ymd){
+    var p = ymd.split("-"), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]));
+    return DIAS[d.getUTCDay()] + " " + (+p[2]) + " de " + MESES[+p[1] - 1];
+  }
+
+  var n2 = new Intl.NumberFormat("es-ES", {minimumFractionDigits:2, maximumFractionDigits:2});
+  var n3 = new Intl.NumberFormat("es-ES", {minimumFractionDigits:3, maximumFractionDigits:3});
+  var n0 = new Intl.NumberFormat("es-ES", {maximumFractionDigits:0});
+  function num(v){ return v >= 100 ? n0.format(v) : n2.format(v); }
+  function money(v){ return num(v) + " €"; }
+  /* céntimos para importes pequeños: más fácil de entender */
+  function cost(v){ return v < 1 ? n0.format(Math.round(v * 100)) + " cént." : money(v); }
+  function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+  function hh(h){ return (h < 10 ? "0" : "") + h + ":00"; }
+
+  /* Precios: archivo actualizado cada día; si no carga, los últimos incluidos en la página */
+  var FALLBACK = {"actualizado": "2026-10-27T15:00:00+01:00", "fuente": "Red Eléctrica de España · PVPC 2.0TD (península, Baleares y Canarias)", "unidad": "€/kWh sin impuestos", "impuestos": {"iva": 0.21, "iee": 0.0511269632}, "dias": {"2026-10-27": [0.1933, 0.1899, 0.1841, 0.1848, 0.1945, 0.2035, 0.236, 0.2713, 0.2865, 0.21, 0.2028, 0.1853, 0.1598, 0.159, 0.1032, 0.1389, 0.2276, 0.2834, 0.3782, 0.3743, 0.3599, 0.3396, 0.2572, 0.2365]}};
+  function loadPrices(){
+    var ok = function(d){ return d && d.dias && typeof d.dias === "object" && Object.keys(d.dias).length; };
+    if (!window.fetch) return Promise.resolve(FALLBACK);
+    return fetch("datos/precios.json", {cache:"no-store"})
+      .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(d){ return ok(d) ? d : FALLBACK; })
+      .catch(function(){ return FALLBACK; });
+  }
+  function taxFactor(d){
+    var t = (d && d.impuestos) || {};
+    return (1 + (typeof t.iee === "number" ? t.iee : 0.0511269632)) * (1 + (typeof t.iva === "number" ? t.iva : 0.21));
+  }
+  function reduced(){ try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e){ return true; } }
+
+  return { icon:icon, settings:settings, save:save, bindSize:bindSize, madrid:madrid, addDays:addDays, dayLabel:dayLabel,
+           n2:n2, n3:n3, n0:n0, num:num, money:money, cost:cost, cap:cap, hh:hh, loadPrices:loadPrices, taxFactor:taxFactor, reduced:reduced };
+})();
+
+
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var S = RV.settings;
+
+  /* e = kWh por uso · d = horas que dura · u = usos a la semana */
+  var USES = [
+    {id:"lavadora", n:"Lavadora", art:"la", what:"un lavado a 40 °C", e:0.8, d:2, u:4},
+    {id:"lavavajillas", n:"Lavavajillas", art:"el", what:"un lavado normal", e:1.0, d:2, u:5},
+    {id:"secadora", n:"Secadora", art:"la", what:"un secado", e:2.5, d:1.5, u:2},
+    {id:"plancha", n:"Plancha", art:"la", what:"una sesión de plancha", e:0.6, d:1, u:1},
+    {id:"horno", n:"Horno", art:"el", what:"una hora de horno", e:1.2, d:1, u:3},
+    {id:"vitro", n:"Vitro o placa", art:"la", what:"cocinar una hora", e:1.2, d:1, u:7},
+    {id:"freidora", n:"Freidora de aire", art:"la", what:"media hora", e:0.6, d:0.5, u:4},
+    {id:"termo", n:"Termo de agua", art:"el", what:"calentar el depósito", e:2.5, d:2, u:7},
+    {id:"estufa", n:"Estufa", art:"la", what:"una hora a 2000 W", e:2, d:1, u:7},
+    {id:"radiador", n:"Radiador", art:"el", what:"una hora", e:1, d:1, u:7},
+    {id:"aire", n:"Aire acondicionado", art:"el", what:"una hora", e:0.9, d:1, u:7},
+    {id:"coche", n:"Coche eléctrico", art:"el", what:"cargar 100 km en un enchufe normal", e:15, d:7, u:2}
+  ];
+  var byId = {}; USES.forEach(function(a){ byId[a.id] = a; });
+  var pick = S.useApp && byId[S.useApp] ? S.useApp : "lavadora";
+  var LABEL = {cheap:"Barata", mid:"Normal", dear:"Cara"};
+
+  var D = null, factor = 1, base = null, stale = false, hasTomorrow = false, nowH = null, nowM = 0;
+  var dayFinal = [[], []], dayCls = [[], []], viewDay = 0, selHour = null;
+
+  function fin(p){ return p * factor; }
+  function classes(arr){
+    var idx = arr.map(function(_, i){ return i; }).sort(function(a, b){ return arr[a] - arr[b]; });
+    var c = new Array(arr.length);
+    idx.forEach(function(h, r){ c[h] = r < 8 ? "cheap" : (r >= arr.length - 8 ? "dear" : "mid"); });
+    return c;
+  }
+  function norm(a){
+    a = (a || []).slice(0, 24);
+    while (a.length && a.length < 24) a.push(a[a.length - 1]);
+    return a;
+  }
+  function fixed(){ return S.tarifa === "fijo"; }
+  function range(h){ return RV.hh(h) + " a " + RV.hh((h + 1) % 24); }
+  function short(h){ return h + "–" + (h + 1) + " h"; }
+
+  function start(d){
+    if (!d){ $("verdict").textContent = "Sin datos"; $("nowSentence").textContent = "No hemos podido cargar los precios. Prueba a recargar la página en un rato."; return; }
+    D = d; factor = RV.taxFactor(d);
+    var m = RV.madrid();
+    var keys = Object.keys(d.dias).sort();
+    if (d.dias[m.date]) { base = m.date; nowH = m.h; nowM = m.m; stale = false; }
+    else {
+      var past = keys.filter(function(k){ return k <= m.date; });
+      base = past.length ? past[past.length - 1] : keys[keys.length - 1];
+      stale = true; nowH = null;
+    }
+    var tKey = RV.addDays(base, 1);
+    hasTomorrow = !stale && !!d.dias[tKey] && norm(d.dias[tKey]).length === 24;
+    dayFinal[0] = norm(d.dias[base]).map(fin);
+    dayCls[0] = classes(dayFinal[0]);
+    if (hasTomorrow){ dayFinal[1] = norm(d.dias[tKey]).map(fin); dayCls[1] = classes(dayFinal[1]); }
+
+    $("todayKicker").textContent = RV.cap(RV.dayLabel(base));
+    $("tabD0s").textContent = shortDate(base);
+    if (hasTomorrow) $("tabD1s").textContent = shortDate(tKey);
+    $("tabD1").disabled = !hasTomorrow;
+    if (stale){
+      $("staleNote").hidden = false;
+      $("staleNote").textContent = "Todavía no tenemos los precios de hoy. Te enseñamos los del " + RV.dayLabel(base) + ".";
+      $("tabD0").firstChild.textContent = "Último día";
+    }
+    selHour = stale ? null : nowH;
+    buildApps(); renderAll();
+  }
+  function shortDate(ymd){ var p = ymd.split("-"); return (+p[2]) + "/" + (+p[1]); }
+
+  /* Estado de ahora */
+  function renderNow(){
+    var arr = dayFinal[0], cls = dayCls[0];
+    var min = Math.min.apply(null, arr), max = Math.max.apply(null, arr);
+    var avg = arr.reduce(function(s, v){ return s + v; }, 0) / arr.length;
+    var iMin = arr.indexOf(min), iMax = arr.indexOf(max);
+    $("rMin").innerHTML = ""; $("rMin").appendChild(txt(short(iMin))); $("rMin").appendChild(small(RV.n2.format(min) + " €"));
+    $("rMax").innerHTML = ""; $("rMax").appendChild(txt(short(iMax))); $("rMax").appendChild(small(RV.n2.format(max) + " €"));
+    $("rAvg").innerHTML = ""; $("rAvg").appendChild(txt(RV.n2.format(avg) + " €")); $("rAvg").appendChild(small("por kWh"));
+    $("tarLabel").textContent = fixed() ? "Precio fijo (" + RV.n3.format(S.fijo) + " €)" : "Regulada (PVPC)";
+
+    var v = $("verdict");
+    if (fixed()){
+      $("nowKicker").textContent = "Tu precio";
+      $("h-now").textContent = "Con precio fijo";
+      $("nowPrice").textContent = RV.n3.format(S.fijo);
+      $("nowUnit").textContent = "€ por kWh, a cualquier hora";
+      v.hidden = false; v.removeAttribute("data-c"); v.textContent = "Igual a todas horas"; $("reads").hidden = true;
+      $("nowSentence").textContent = "Con precio fijo da igual la hora: pagas lo mismo. Abajo tienes los precios de la tarifa regulada por si te interesa compararla.";
+      $("nextCheap").hidden = true;
+      return;
+    }
+    $("nextCheap").hidden = false; $("reads").hidden = false; v.hidden = false;
+    $("h-now").textContent = "La luz ahora";
+    $("nowUnit").textContent = "€ por kWh, con impuestos";
+    if (stale){
+      $("nowKicker").textContent = "Media del día";
+      $("h-now").textContent = "Último día con datos";
+      $("nowPrice").textContent = RV.n2.format(avg);
+      v.hidden = true;
+      $("nowSentence").textContent = "Cuando salgan los precios de hoy, verás aquí si la luz está barata o cara en este momento.";
+      $("nextCheap").textContent = "La hora más barata de ese día fue de " + range(iMin) + ".";
+      return;
+    }
+    var c = cls[nowH];
+    $("nowKicker").textContent = "Ahora · " + range(nowH);
+    $("nowPrice").textContent = RV.n2.format(arr[nowH]);
+    v.setAttribute("data-c", c); v.textContent = LABEL[c] + " ahora";
+    $("nowSentence").textContent = c === "cheap" ? "Es una de las 8 horas más baratas de hoy. Buen momento para lo que gaste mucho."
+      : c === "dear" ? "Es una de las 8 horas más caras de hoy. Si puedes, espera para poner lo que más gasta."
+      : "Está en la media de hoy. Ni el mejor ni el peor momento.";
+    $("nextCheap").textContent = nextCheapText();
+  }
+  function nextCheapText(){
+    var cls = dayCls[0];
+    if (cls[nowH] === "cheap"){
+      var e = nowH; while (e + 1 < 24 && cls[e + 1] === "cheap") e++;
+      if (e === 23 && hasTomorrow && dayCls[1][0] === "cheap"){
+        var t = 0; while (t + 1 < 24 && dayCls[1][t + 1] === "cheap") t++;
+        return "Sigue barata hasta mañana a las " + RV.hh(t + 1) + ".";
+      }
+      return "Sigue barata hasta las " + RV.hh((e + 1) % 24) + ".";
+    }
+    for (var h = nowH + 1; h < 24; h++) if (cls[h] === "cheap") return "La próxima hora barata empieza a las " + RV.hh(h) + ".";
+    if (hasTomorrow) for (var k = 0; k < 24; k++) if (dayCls[1][k] === "cheap") return "La próxima hora barata: mañana a las " + RV.hh(k) + ".";
+    return "Hoy ya no quedan horas baratas. Los precios de mañana salen hacia las 20:15.";
+  }
+  function txt(s){ return document.createTextNode(s); }
+  function small(s){ var e = document.createElement("small"); e.textContent = s; return e; }
+
+  /* ¿Cuándo pongo…? */
+  function buildApps(){
+    var box = $("hApps"); box.innerHTML = "";
+    USES.forEach(function(a){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "tile"; b.id = "use-" + a.id;
+      b.innerHTML = RV.icon(a.id) + "<span></span>"; b.lastChild.textContent = a.n;
+      b.addEventListener("click", function(){ pick = a.id; S.useApp = a.id; RV.save(); renderAnswer(); markApps(); });
+      box.appendChild(b);
+    });
+    markApps();
+  }
+  function markApps(){ USES.forEach(function(a){ $("use-" + a.id).setAttribute("aria-pressed", a.id === pick ? "true" : "false"); }); }
+
+  function slots(){
+    var s = dayFinal[0].slice();
+    if (hasTomorrow) s = s.concat(dayFinal[1]);
+    if (fixed()) s = s.map(function(){ return S.fijo; });
+    return s;
+  }
+  function windowCost(sl, pos, dur, e){
+    var end = pos + dur, c = 0;
+    for (var i = Math.floor(pos); i < Math.ceil(end); i++){
+      var ov = Math.min(end, i + 1) - Math.max(pos, i);
+      if (ov > 0) c += (e / dur) * ov * sl[i];
+    }
+    return c;
+  }
+  function whenLabel(pos, isNow){
+    if (isNow) return "ahora";
+    var i = Math.floor(pos);
+    return (i >= 24 ? "mañana a las " : (stale ? "a las " : "hoy a las ")) + RV.hh(i % 24);
+  }
+  function renderAnswer(){
+    var a = byId[pick], sl = slots();
+    var gender = a.art === "la" ? "la" : "lo";
+    $("ansCap").textContent = a.n + " · " + a.what + " · unos " + (Math.round(a.e * 100) / 100).toLocaleString("es-ES") + " kWh en " + durTxt(a.d);
+    var cands = [], startPos = stale ? 0 : nowH + nowM / 60;
+    if (!stale && startPos + a.d <= sl.length) cands.push({pos:startPos, now:true});
+    for (var s = stale ? 0 : nowH + 1; s + a.d <= sl.length; s++) cands.push({pos:s});
+    cands.forEach(function(c){ c.cost = windowCost(sl, c.pos, a.d, a.e); });
+
+    var rows = $("ansRows"), save = $("ansSave"), month = $("ansMonth");
+    if (!cands.length){
+      rows.hidden = true; month.textContent = "";
+      save.textContent = "Hoy ya no quedan horas suficientes para calcularlo entero. Los precios de mañana salen hacia las 20:15.";
+      return;
+    }
+    rows.hidden = false;
+    var best = cands[0], worst = cands[0];
+    cands.forEach(function(c){ if (c.cost < best.cost - 1e-9) best = c; if (c.cost > worst.cost + 1e-9) worst = c; });
+    var ref = stale ? worst : cands[0];
+    var top = Math.max(worst.cost, ref.cost) || 1;
+
+    $("ansNowWhen").textContent = stale ? "Media del día" : "Si " + gender + " pones ahora";
+    var refCost = stale ? cands.reduce(function(s, c){ return s + c.cost; }, 0) / cands.length : ref.cost;
+    $("ansNow").textContent = RV.cost(refCost);
+    $("barNow").style.width = (100 * refCost / top) + "%";
+
+    if (fixed()){
+      $("rowBest").hidden = true; $("rowWorst").hidden = true;
+      $("ansNowWhen").textContent = "A cualquier hora";
+      save.textContent = "Con precio fijo cuesta lo mismo a cualquier hora.";
+      month.textContent = "Si tu tarifa tiene tramos (punta, llano y valle), lo más barato es de 0 a 8 h y todo el fin de semana.";
+      return;
+    }
+    $("rowBest").hidden = false; $("rowWorst").hidden = false;
+    $("ansBestWhen").textContent = whenLabel(best.pos, best.now);
+    $("ansBest").textContent = RV.cost(best.cost);
+    $("barBest").style.width = (100 * best.cost / top) + "%";
+    $("ansWorstWhen").textContent = whenLabel(worst.pos, worst.now);
+    $("ansWorst").textContent = RV.cost(worst.cost);
+    $("barWorst").style.width = (100 * worst.cost / top) + "%";
+
+    var diff = refCost - best.cost;
+    save.innerHTML = "";
+    if (!stale && best.now){
+      save.textContent = "Ahora es el mejor momento que queda. ¡Ponla ya!".replace("Ponla", gender === "la" ? "Ponla" : "Ponlo");
+    } else if (diff < 0.005){
+      save.textContent = "Da casi igual cuándo " + gender + " pongas: la diferencia es de menos de un céntimo.";
+    } else {
+      var pct = Math.round(100 * diff / refCost);
+      var bi = Math.floor(best.pos);
+      save.appendChild(txt((bi >= 24 ? "Si lo dejas para mañana a las " : "Si esperas a las ") + RV.hh(bi % 24) + ", te ahorras "));
+      var em = document.createElement("em"); em.textContent = RV.cost(diff) + " (" + pct + " %)"; save.appendChild(em);
+      save.appendChild(txt("."));
+      if (stale) save.firstChild.textContent = "Poniéndo" + gender + " a la mejor hora en lugar de a la media, te ahorras ";
+    }
+    var perMonth = (worst.cost - best.cost) * a.u * 52 / 12;
+    month.textContent = perMonth >= 0.1
+      ? "Entre la mejor y la peor hora de hoy hay " + RV.cost(worst.cost - best.cost) + " de diferencia. Usándo" + gender + " " + a.u + (a.u === 1 ? " vez" : " veces") + " por semana, son unos " + RV.money(perMonth) + " al mes."
+      : "";
+  }
+  function durTxt(d){
+    if (d < 1) return Math.round(d * 60) + " minutos";
+    if (d === 1) return "1 hora";
+    return (d % 1 ? RV.n2.format(d).replace(/0$/, "") : d) + " horas";
+  }
+
+  /* 24 horas */
+  function renderChart(){
+    var arr = dayFinal[viewDay], cls = dayCls[viewDay];
+    var max = Math.max.apply(null, arr);
+    var top = Math.ceil(max * 10) / 10;
+    $("maxLab").textContent = RV.n2.format(top) + " €/kWh";
+    var bars = $("bars"); bars.innerHTML = "";
+    var axis = $("axis"); axis.innerHTML = "";
+    arr.forEach(function(p, h){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "bar c-" + cls[h];
+      if (viewDay === 0 && !stale && h < nowH) b.className += " past";
+      if (viewDay === 0 && !stale && h === nowH) b.className += " now";
+      b.setAttribute("aria-label", "De " + range(h) + ": " + RV.n2.format(p) + " euros por kWh, " + LABEL[cls[h]].toLowerCase());
+      b.setAttribute("aria-pressed", h === selHour ? "true" : "false");
+      var i = document.createElement("i"); i.style.height = (100 * p / top) + "%"; b.appendChild(i);
+      b.addEventListener("click", function(){ selHour = h; renderChart(); });
+      bars.appendChild(b);
+      var s = document.createElement("span"); s.textContent = h % 3 === 0 ? h + "h" : ""; axis.appendChild(s);
+    });
+    if (selHour === null){ selHour = arr.indexOf(Math.min.apply(null, arr)); return renderChart(); }
+    var ph = selHour;
+    var dayTxt = viewDay === 1 ? "Mañana" : (stale ? "Ese día" : "Hoy");
+    $("pick").innerHTML = "";
+    $("pick").appendChild(txt(dayTxt + ", de " + range(ph) + ": "));
+    var bb = document.createElement("b"); bb.textContent = RV.n2.format(arr[ph]) + " €/kWh"; $("pick").appendChild(bb);
+    $("pick").appendChild(txt(" · " + LABEL[cls[ph]] + (viewDay === 0 && !stale && ph === nowH ? " · es la hora actual" : "")));
+    $("h-hours").textContent = viewDay === 1 ? "Las 24 horas de mañana" : (stale ? "Las 24 horas de ese día" : "Las 24 horas de hoy");
+    $("tabD0").setAttribute("aria-pressed", viewDay === 0 ? "true" : "false");
+    $("tabD1").setAttribute("aria-pressed", viewDay === 1 ? "true" : "false");
+
+    var tb = $("tbody"); tb.innerHTML = "";
+    arr.forEach(function(p, h){
+      var tr = document.createElement("tr");
+      if (viewDay === 0 && !stale && h === nowH) tr.className = "now-row";
+      tr.innerHTML = '<td></td><td class="num"></td><td><span class="tag"></span></td>';
+      tr.children[0].textContent = range(h);
+      tr.children[1].textContent = RV.n3.format(p);
+      var tg = tr.querySelector(".tag"); tg.className = "tag c-" + cls[h]; tg.textContent = LABEL[cls[h]];
+      tb.appendChild(tr);
+    });
+    $("chartNote").textContent = fixed()
+      ? "Estos son los precios de la tarifa regulada, con impuestos. Con tu precio fijo pagas lo mismo a cualquier hora."
+      : "Barata son las 8 horas más baratas del día y cara, las 8 más caras. Precios de la tarifa regulada con impuestos.";
+  }
+  $("tabD0").addEventListener("click", function(){ viewDay = 0; selHour = stale ? null : nowH; renderChart(); });
+  $("tabD1").addEventListener("click", function(){ if (!hasTomorrow) return; viewDay = 1; selHour = null; renderChart(); });
+
+  /* Tarifa */
+  function renderTariff(){
+    $("tar-pvpc").setAttribute("aria-pressed", fixed() ? "false" : "true");
+    $("tar-fijo").setAttribute("aria-pressed", fixed() ? "true" : "false");
+    $("fijoField").hidden = !fixed();
+    if (document.activeElement !== $("fijoInput")) $("fijoInput").value = String(S.fijo).replace(".", ",");
+  }
+  $("tarToggle").addEventListener("click", function(){
+    var open = $("tarEdit").hidden;
+    $("tarEdit").hidden = !open; this.setAttribute("aria-expanded", open ? "true" : "false"); this.textContent = open ? "Cerrar" : "Cambiar";
+  });
+  $("tar-pvpc").addEventListener("click", function(){ S.tarifa = "pvpc"; RV.save(); renderAll(); });
+  $("tar-fijo").addEventListener("click", function(){ S.tarifa = "fijo"; RV.save(); renderAll(); $("fijoInput").focus(); });
+  $("fijoInput").addEventListener("input", function(){
+    var v = parseFloat(this.value.replace(",", "."));
+    if (v > 0 && v < 2){ S.fijo = v; RV.save(); renderAll(); }
+  });
+
+  function renderAll(){ if (!D) return; renderTariff(); renderNow(); renderAnswer(); renderChart(); }
+
+  RV.bindSize();
+  RV.loadPrices().then(start);
+})();
+</script>
+
+</body>
+</html>
